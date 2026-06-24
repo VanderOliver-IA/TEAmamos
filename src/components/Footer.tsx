@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Heart } from "lucide-react";
 import { SectionReveal } from "./Animations";
+import { APP_VERSION } from "@/lib/version";
 
 const LINKS = [
   { label: "Início", href: "#inicio" },
@@ -79,6 +80,9 @@ export function Footer() {
           </p>
           <p className="text-center text-white/20 text-xs">
             © {new Date().getFullYear()} TEAmamos — Todos os direitos reservados.
+          </p>
+          <p className="text-center text-white/30 text-[11px] font-mono mt-3 tracking-normal">
+            {APP_VERSION}
           </p>
         </div>
       </div>

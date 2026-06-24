@@ -5,17 +5,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 export function Preloader() {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
 
   useEffect(() => {
     const timer = setTimeout(() => setShow(false), 2200);
     return () => clearTimeout(timer);
-  }, []);
-
-  // Respect reduced motion
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mq.matches) setShow(false);
   }, []);
 
   return (
