@@ -10,6 +10,7 @@
 | 4 | 24/06/2026 18:41 | Corrigir roteamento do standalone no Coolify e publicar V1.00.03 | `Codex` | `2026-06-24-teamamos-standalone-host-v10003` |
 | 5 | 24/06/2026 19:15 | Corrigir tamanho do BrandLogo e reverter Hero para variant icon (V1.00.04) | `Codex` | `2026-06-24-teamamos-logo-size-v10004` |
 | 6 | 24/06/2026 19:41 | Criar README.md completo e tutorial de deploy no Coolify (V1.00.05) | `Codex` | `2026-06-24-teamamos-readme-v10005` |
+| 7 | 24/06/2026 19:44 | Corrigir erro EBUSY no build Nixpacks substituindo npm ci por npm install (V1.00.06) | `Codex` | `2026-06-24-teamamos-nixpacks-ebusy-v10006` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -120,3 +121,20 @@
 
 🤖 **Antigravity** (`Codex`):
 > Sobrescreveu o `README.md` com um documento bem estruturado contendo a descrição da iniciativa, stack tecnológica, instruções de execução local e o guia passo a passo alertando sobre o uso obrigatório do "GitHub App" como source no Coolify. Atualizou o versionamento para `V1.00.05` e preparou o commit/push.
+
+## 💬 Conversa 7: 2026-06-24-teamamos-nixpacks-ebusy-v10006
+
+- **Data:** 24/06/24 19:44
+- **ID da Conversa:** `2026-06-24-teamamos-nixpacks-ebusy-v10006`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `replace_file_content`, `run_command`
+- **Arquivos Envolvidos:** `nixpacks.toml`, `package.json`, `src/lib/version.ts`, `atualizaçoes do projeto.md`, `allchat-site.md`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Enviou os logs de erro de build no Coolify, onde o comando `npm ci` falhou com erro `EBUSY: resource busy or locked, rmdir /app/node_modules/.cache`.
+
+🤖 **Antigravity** (`Codex`):
+> Identificou o clássico conflito de cache do Nixpacks com o `npm ci`. O Nixpacks monta um volume em `.cache` para acelerar builds, mas o `npm ci` tenta deletar a pasta `node_modules` inteira antes de rodar, resultando em erro `EBUSY` na montagem do Docker. Separou as fases em `nixpacks.toml` e substituiu `npm ci` por `npm install` no bloco `[phases.install]`. Subiu a correção como `V1.00.06`.

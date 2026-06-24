@@ -1,5 +1,6 @@
 # Atualizaçoes do projeto
 
+- V1.00.06: Correção de erro `EBUSY` no build do Nixpacks substituindo `npm ci` por `npm install` no arquivo `nixpacks.toml` para evitar conflito com montagem de cache do Docker.
 - V1.00.05: Atualização do README.md com informações completas do projeto, stack tecnológico e instruções detalhadas de como realizar o deploy no Coolify utilizando a integração nativa GitHub App.
 - V1.00.04: Correção do tamanho das imagens responsivas (BrandLogo) e reversão do logo do Hero para a versão em ícone, evitando que os PNGs com fundo xadrez fiquem gigantes e quebrem o layout.
 - V1.00.03: Correção do start standalone em produção para forçar `HOSTNAME=0.0.0.0`, permitindo o roteamento correto pelo proxy do Coolify.
