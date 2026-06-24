@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { Heart } from "lucide-react";
 import { SectionReveal } from "./Animations";
 import { APP_VERSION } from "@/lib/version";
+import { BrandLogo, BrandName } from "./BrandLogo";
 
 const LINKS = [
   { label: "Início", href: "#inicio" },
@@ -24,18 +24,14 @@ export function Footer() {
         <SectionReveal className="text-center mb-12">
           {/* Logo */}
           <div className="flex justify-center mb-6">
-            <Image
-              src="/images/logo_icone_TEAmamos.png"
-              alt="TEAmamos"
-              width={60}
-              height={60}
-            />
+            <BrandLogo variant="vertical" className="h-24 w-auto" />
           </div>
 
           {/* Brand */}
-          <div className="flex items-baseline justify-center mb-4">
-            <span className="font-nunito text-2xl font-extrabold text-white">TEA</span>
-            <span className="font-nunito text-2xl font-extrabold text-coral">mamos</span>
+          <div className="flex justify-center mb-4">
+            <span className="rounded-md bg-white/95 px-3 py-2">
+              <BrandLogo variant="text" className="h-10 w-auto" />
+            </span>
           </div>
 
           {/* Tagline */}
@@ -45,7 +41,7 @@ export function Footer() {
 
           {/* Description */}
           <p className="text-white/60 text-sm max-w-lg mx-auto leading-relaxed mb-8">
-            O TEAmamos é um projeto em construção colaborativa, idealizado por Vanderson Oliveira,
+            O <BrandName className="rounded-sm bg-white/90 px-1" /> é um projeto em construção colaborativa, idealizado por Vanderson Oliveira,
             para criar uma ferramenta mais humana, prática e organizada para pessoas TEA, famílias,
             cuidadores e profissionais.
           </p>
@@ -76,10 +72,10 @@ export function Footer() {
         {/* Disclaimer */}
         <div className="border-t border-white/10 pt-8">
           <p className="text-center text-white/30 text-xs max-w-lg mx-auto leading-relaxed mb-4">
-            O TEAmamos não realiza diagnóstico, não prescreve condutas e não substitui acompanhamento profissional.
+            O <BrandName className="rounded-sm bg-white/90 px-1" /> não realiza diagnóstico, não prescreve condutas e não substitui acompanhamento profissional.
           </p>
           <p className="text-center text-white/20 text-xs">
-            © {new Date().getFullYear()} TEAmamos — Todos os direitos reservados.
+            © {new Date().getFullYear()} <BrandName className="rounded-sm bg-white/90 px-1" /> — Todos os direitos reservados.
           </p>
           <p className="text-center text-white/30 text-[11px] font-mono mt-3 tracking-normal">
             {APP_VERSION}

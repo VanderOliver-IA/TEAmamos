@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { SectionReveal } from "./Animations";
+import { BrandName } from "./BrandLogo";
 import {
   School,
   Stethoscope,
@@ -51,7 +52,7 @@ export function WhySection() {
             </h2>
             <div className="space-y-4 text-marinho/75 leading-relaxed">
               <p>
-                O TEAmamos nasce da vivência real de <strong className="text-marinho">Vanderson Oliveira</strong>,
+                O <BrandName /> nasce da vivência real de <strong className="text-marinho">Vanderson Oliveira</strong>,
                 pai de uma filha autista, que vive de perto os desafios, descobertas e necessidades que
                 fazem parte da rotina de uma família TEA.
               </p>

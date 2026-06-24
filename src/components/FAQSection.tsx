@@ -1,17 +1,19 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionReveal } from "./Animations";
 import { ChevronDown } from "lucide-react";
+import { BrandName } from "./BrandLogo";
 
-const FAQS = [
+const FAQS: { q: ReactNode; a: ReactNode }[] = [
   {
-    q: "O TEAmamos já existe?",
+    q: <>O <BrandName /> já existe?</>,
     a: "Ainda não. O projeto está em fase de apresentação, pesquisa e colaboração pública. Esta landing page é o primeiro passo para ouvir a comunidade antes de construir o sistema.",
   },
   {
-    q: "O TEAmamos será um aplicativo?",
+    q: <>O <BrandName /> será um aplicativo?</>,
     a: "A ideia inicial é criar um sistema ou aplicativo completo. A estrutura final será definida após ouvir a comunidade e entender as necessidades reais de quem vive o TEA.",
   },
   {
@@ -23,8 +25,8 @@ const FAQS = [
     a: "Essa decisão ainda será estudada. O foco atual é entender as necessidades reais para construir a melhor primeira versão possível, priorizando o impacto social.",
   },
   {
-    q: "O TEAmamos faz diagnóstico?",
-    a: "Não. O TEAmamos não diagnostica, não prescreve e não substitui profissionais. É uma ferramenta de organização e apoio ao cuidado.",
+    q: <>O <BrandName /> faz diagnóstico?</>,
+    a: <>Não. O <BrandName /> não diagnostica, não prescreve e não substitui profissionais. É uma ferramenta de organização e apoio ao cuidado.</>,
   },
   {
     q: "Pessoas TEA adultas podem participar?",

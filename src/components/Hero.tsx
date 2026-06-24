@@ -2,9 +2,9 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import { ChevronDown, Heart } from "lucide-react";
 import { PuzzlePiece } from "./PuzzleHeart";
+import { BrandLogo, BrandName } from "./BrandLogo";
 
 export function Hero() {
   const ref = useRef(null);
@@ -61,14 +61,7 @@ export function Hero() {
           className="flex justify-center mb-8"
         >
           <div className="animate-breathe">
-            <Image
-              src="/images/logo_icone_TEAmamos.png"
-              alt="TEAmamos - Coração de quebra-cabeça"
-              width={120}
-              height={120}
-              priority
-              className="drop-shadow-lg"
-            />
+            <BrandLogo variant="square" priority className="h-48 sm:h-56 md:h-64 w-auto drop-shadow-lg" />
           </div>
         </motion.div>
 
@@ -79,8 +72,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 2.4 }}
           className="font-nunito text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-marinho leading-tight mb-6"
         >
-          <span className="text-marinho">TEA</span>
-          <span className="text-coral">mamos</span>
+          <BrandName className="text-[1.12em]" />
           <span className="text-marinho">: </span>
           <br className="hidden sm:block" />
           <span className="text-marinho/90 text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem]">
@@ -96,7 +88,7 @@ export function Hero() {
           className="font-inter text-base sm:text-lg text-marinho/70 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
           Idealizado por <strong className="text-marinho">Vanderson Oliveira</strong>, pai de uma filha
-          autista, o TEAmamos nasce para ajudar famílias, pessoas TEA, cuidadores e profissionais a
+          autista, o <BrandName /> nasce para ajudar famílias, pessoas TEA, cuidadores e profissionais a
           transformarem rotina, informações e acompanhamento em mais previsibilidade, clareza e cuidado.
         </motion.p>
 

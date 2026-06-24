@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import { BrandLogo } from "./BrandLogo";
 
 export function Preloader() {
   const [show, setShow] = useState(() => {
@@ -24,20 +24,14 @@ export function Preloader() {
           transition={{ duration: 0.5 }}
         >
           {/* Puzzle pieces assembling */}
-          <div className="relative w-32 h-32 mb-8">
+          <div className="relative mb-8">
             <motion.div
               initial={{ x: -60, y: -60, opacity: 0, rotate: -20 }}
               animate={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="absolute inset-0"
+              className="w-40"
             >
-              <Image
-                src="/images/logo_icone_TEAmamos.png"
-                alt="TEAmamos"
-                fill
-                className="object-contain"
-                priority
-              />
+              <BrandLogo variant="vertical" priority className="h-auto w-full" />
             </motion.div>
           </div>
 
@@ -46,10 +40,9 @@ export function Preloader() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
-            className="flex items-baseline"
+            className="w-56"
           >
-            <span className="font-nunito text-4xl font-extrabold text-marinho">TEA</span>
-            <span className="font-nunito text-4xl font-extrabold text-coral">mamos</span>
+            <BrandLogo variant="text" priority className="h-auto w-full" />
           </motion.div>
 
           {/* Tagline */}

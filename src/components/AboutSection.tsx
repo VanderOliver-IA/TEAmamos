@@ -2,6 +2,7 @@
 
 import { SectionReveal } from "./Animations";
 import { PuzzlePiece } from "./PuzzleHeart";
+import { BrandName } from "./BrandLogo";
 
 export function AboutSection() {
   return (
@@ -25,7 +26,7 @@ export function AboutSection() {
           <h2 className="font-nunito text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-6">
             Quem está idealizando
             <br />
-            <span className="text-teal">o TEAmamos</span>
+            <span className="text-teal">o <BrandName className="rounded-sm bg-white/90 px-1" /></span>
           </h2>
         </SectionReveal>
 
@@ -33,7 +34,7 @@ export function AboutSection() {
           <div className="bg-white/5 rounded-2xl p-8 border border-white/10 backdrop-blur-sm">
             <div className="space-y-4 text-white/80 leading-relaxed">
               <p>
-                <strong className="text-white">Vanderson Oliveira</strong> é o idealizador do TEAmamos.
+                <strong className="text-white">Vanderson Oliveira</strong> é o idealizador do <BrandName className="rounded-sm bg-white/90 px-1" />.
               </p>
               <p>
                 Pai de uma filha autista, ele vive de perto as necessidades, desafios e descobertas que
@@ -49,7 +50,7 @@ export function AboutSection() {
                 propor uma ferramenta construída com escuta, responsabilidade e propósito.
               </p>
               <p>
-                O TEAmamos nasce dessa união entre vida real e construção prática. Não é um projeto
+                O <BrandName className="rounded-sm bg-white/90 px-1" /> nasce dessa união entre vida real e construção prática. Não é um projeto
                 criado apenas para parecer bonito. É uma tentativa consciente de transformar uma dor
                 real em uma solução útil para mais famílias.
               </p>

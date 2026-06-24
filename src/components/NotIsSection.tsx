@@ -2,6 +2,7 @@
 
 import { SectionReveal } from "./Animations";
 import { X, Check } from "lucide-react";
+import { BrandName } from "./BrandLogo";
 
 const NOT_IS = [
   { text: "diagnóstico", tip: "O sistema não identifica TEA nem substitui avaliação profissional." },
@@ -46,7 +47,7 @@ export function NotIsSection() {
             <div className="bg-coral/5 border-2 border-coral/20 rounded-2xl p-6">
               <h3 className="font-nunito font-bold text-xl text-coral mb-6 flex items-center gap-2">
                 <X size={24} className="p-1 bg-coral text-white rounded-full" />
-                O TEAmamos não é
+                O <BrandName /> não é
               </h3>
               <ul className="space-y-3">
                 {NOT_IS.map((item) => (
@@ -71,7 +72,7 @@ export function NotIsSection() {
             <div className="bg-teal/5 border-2 border-teal/20 rounded-2xl p-6">
               <h3 className="font-nunito font-bold text-xl text-teal mb-6 flex items-center gap-2">
                 <Check size={24} className="p-1 bg-teal text-white rounded-full" />
-                O TEAmamos pretende ser
+                O <BrandName /> pretende ser
               </h3>
               <ul className="space-y-3">
                 {IS.map((item) => (

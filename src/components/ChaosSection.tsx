@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionReveal } from "./Animations";
+import { BrandName } from "./BrandLogo";
 import {
   MessageSquare,
   FileText,
@@ -135,7 +136,7 @@ export function ChaosSection() {
             {isOrganized ? "Ver o caos novamente" : "Organizar"}
           </button>
           {!isOrganized && (
-            <p className="text-xs text-marinho/40 mt-3">Clique para ver como o TEAmamos quer resolver isso</p>
+            <p className="text-xs text-marinho/40 mt-3">Clique para ver como o <BrandName /> quer resolver isso</p>
           )}
         </div>
       </div>

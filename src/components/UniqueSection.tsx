@@ -1,6 +1,7 @@
 "use client";
 
 import { SectionReveal, StaggerContainer, StaggerItem } from "./Animations";
+import { BrandName } from "./BrandLogo";
 
 const PROFILES = [
   { label: "Crianças", emoji: "🧒" },
@@ -44,7 +45,7 @@ export function UniqueSection() {
           <p className="text-marinho/70 max-w-2xl mx-auto leading-relaxed">
             Não existe uma única forma de viver o autismo. Cada pessoa TEA tem sua própria maneira
             de se comunicar, se regular, lidar com estímulos, reagir a mudanças, aprender e criar vínculos.
-            Por isso, o TEAmamos não pode ser engessado.
+            Por isso, o <BrandName /> não pode ser engessado.
           </p>
         </SectionReveal>
 

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionReveal } from "./Animations";
 import { Heart, ArrowRight, ArrowLeft, Check, Loader2 } from "lucide-react";
+import { BrandLogo, BrandName } from "./BrandLogo";
 
 const ROLE_OPTIONS = ["Pai/Mãe", "Pessoa TEA", "Familiar", "Cuidador(a)", "Profissional", "Educador(a)", "Outro"];
 const SUPPORT_LEVELS = ["Nível 1", "Nível 2", "Nível 3", "Em avaliação", "Não informado", "Prefiro não classificar"];
@@ -108,10 +109,10 @@ export function FormSection() {
               <Check size={40} className="text-white" />
             </div>
             <h2 className="font-nunito text-3xl font-extrabold text-marinho mb-4">
-              Obrigado por ajudar a construir o TEAmamos
+              Obrigado por ajudar a construir o <BrandName />
             </h2>
             <p className="text-marinho/70 leading-relaxed">
-              Sua contribuição foi recebida. Cada relato, ideia e sugestão ajuda a aproximar o TEAmamos
+              Sua contribuição foi recebida. Cada relato, ideia e sugestão ajuda a aproximar o <BrandName />
               de uma solução mais humana, prática e útil para famílias, pessoas TEA e profissionais.
             </p>
           </motion.div>
@@ -128,7 +129,7 @@ export function FormSection() {
             Colabore
           </span>
           <h2 className="font-nunito text-3xl sm:text-4xl md:text-5xl font-extrabold text-marinho mb-4">
-            Ajude a construir o <span className="text-marinho">TEA</span><span className="text-coral">mamos</span>
+            Ajude a construir o <BrandLogo variant="text" className="mx-auto mt-3 block h-12 sm:h-14 w-auto" />
           </h2>
           <p className="text-marinho/70 max-w-lg mx-auto">
             Sua experiência pode ajudar a criar uma ferramenta mais humana, prática e útil para famílias,
@@ -388,7 +389,7 @@ export function FormSection() {
                       />
                       <span className="text-sm text-marinho/70">
                         Aceito que minhas informações sejam usadas para pesquisa, validação e desenvolvimento
-                        do projeto TEAmamos. Nenhum dado será publicado sem autorização. *
+                        do projeto <BrandName />. Nenhum dado será publicado sem autorização. *
                       </span>
                     </label>
                   </div>

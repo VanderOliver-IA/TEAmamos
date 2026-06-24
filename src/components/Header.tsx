@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import { Heart } from "lucide-react";
+import { BrandLogo } from "./BrandLogo";
 
 const NAV_ITEMS = [
   { label: "Início", href: "#inicio" },
@@ -49,18 +49,15 @@ export function Header() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
           {/* Logo */}
-          <a href="#inicio" className="flex items-center gap-2 shrink-0">
-            <Image
-              src="/images/logo_icone_TEAmamos.png"
-              alt="TEAmamos"
-              width={scrolled ? 32 : 40}
-              height={scrolled ? 32 : 40}
-              className="transition-all duration-300"
+          <a href="#inicio" className="flex items-center gap-3 shrink-0" aria-label="TEAmamos">
+            <BrandLogo
+              variant="icon"
+              className={`${scrolled ? "h-8 w-8" : "h-10 w-10"} transition-all duration-300`}
             />
-            <div className="flex items-baseline">
-              <span className="font-nunito text-lg font-extrabold text-marinho">TEA</span>
-              <span className="font-nunito text-lg font-extrabold text-coral">mamos</span>
-            </div>
+            <BrandLogo
+              variant="text"
+              className={`${scrolled ? "h-6" : "h-7"} w-auto transition-all duration-300`}
+            />
           </a>
 
           {/* Desktop Nav */}

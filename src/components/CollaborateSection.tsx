@@ -2,6 +2,7 @@
 
 import { SectionReveal } from "./Animations";
 import { Heart } from "lucide-react";
+import { BrandName } from "./BrandLogo";
 
 export function CollaborateSection() {
   const handleScroll = () => {
@@ -17,12 +18,12 @@ export function CollaborateSection() {
             Construção Coletiva
           </span>
           <h2 className="font-nunito text-3xl sm:text-4xl md:text-5xl font-extrabold text-marinho mb-6">
-            A melhor versão do TEAmamos
+            A melhor versão do <BrandName />
             <br />
             <span className="text-teal">não será criada sozinho.</span>
           </h2>
           <p className="text-marinho/70 max-w-2xl mx-auto leading-relaxed mb-8">
-            O TEAmamos precisa nascer da escuta. Pais, mães, pessoas TEA, familiares, cuidadores,
+            O <BrandName /> precisa nascer da escuta. Pais, mães, pessoas TEA, familiares, cuidadores,
             terapeutas, professores e profissionais de inclusão vivem detalhes que nenhum planejamento
             isolado consegue prever.
           </p>

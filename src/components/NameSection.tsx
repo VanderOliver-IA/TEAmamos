@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { SectionReveal, StaggerContainer, StaggerItem } from "./Animations";
+import { BrandLogo, BrandName } from "./BrandLogo";
 
 const CARDS = [
   {
@@ -21,7 +22,7 @@ const CARDS = [
   },
   {
     id: "teamamos",
-    title: "TEAmamos",
+    title: "brand",
     color: "border-teal bg-teal/5",
     textColor: "text-teal",
     description: "Representa a união entre organização e amor. Cuidamos porque amamos. Organizamos porque precisamos. Construímos porque ninguém deveria carregar tudo sozinho.",
@@ -39,9 +40,7 @@ export function NameSection() {
             O Nome
           </span>
           <h2 className="font-nunito text-3xl sm:text-4xl md:text-5xl font-extrabold text-marinho mb-6">
-            <span className="text-marinho">TEA</span>
-            <span className="text-coral">mamos</span>
-            {" "}é mais do que um nome.
+            <BrandName className="text-[1.05em]" /> é mais do que um nome.
             <br />
             <span className="text-teal">É uma declaração.</span>
           </h2>
@@ -63,7 +62,11 @@ export function NameSection() {
                 layout
               >
                 <h3 className={`font-nunito text-2xl font-extrabold ${card.textColor} mb-3`}>
-                  {card.title}
+                  {card.title === "brand" ? (
+                    <BrandLogo variant="text" className="h-8 w-auto" />
+                  ) : (
+                    card.title
+                  )}
                 </h3>
                 <motion.div
                   initial={false}
