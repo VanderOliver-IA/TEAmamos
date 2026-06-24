@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧩 TEAmamos
 
-## Getting Started
+> Organizar o cuidado sem perder o amor no processo.
 
-First, run the development server:
+O **TEAmamos** nasce para ajudar famílias, pessoas TEA, cuidadores e profissionais a transformarem rotina, informações e acompanhamento em mais previsibilidade, clareza e cuidado. Idealizado por **Vanderson Oliveira**, pai de uma filha autista.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tecnologias Utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework:** Next.js 16 (App Router)
+- **Biblioteca UI:** React 19
+- **Estilização:** Tailwind CSS v4
+- **Animações:** Framer Motion & GSAP
+- **Banco de Dados (Local):** SQLite (`better-sqlite3`)
+- **Validação de Dados:** Zod + React Hook Form
+- **Infraestrutura/Deploy:** Docker + Nixpacks (via Coolify)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 💻 Como Rodar Localmente
 
-To learn more about Next.js, take a look at the following resources:
+### Pré-requisitos
+- Node.js versão `22.13.0` ou superior (use `nvm use` se aplicável).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Passos
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/VanderOliver-IA/TEAmamos.git
+   cd TEAmamos/site
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
+4. Acesse `http://localhost:3000` no seu navegador.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🚀 Como fazer o Deploy no Coolify (O Jeito Certo)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Para garantir que o deploy ocorra de forma instantânea e via Webhook nativo do GitHub (evitando duplicações de API e lentidão na VPS), siga rigorosamente os passos abaixo:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 1. Criar o Recurso Corretamente
+No painel do Coolify, navegue até o seu servidor e clique em **Add New Resource**.
+Selecione **Public/Private Repository**.
+
+> ⚠️ **ATENÇÃO:** Na hora de selecionar a origem (Source), **NÃO cole a URL do repositório manualmente** (isso faria com que o Coolify usasse a origem genérica "Public Repository" e o webhook fall-back via API).
+
+Em vez disso, clique na aba/opção da sua **Integração do GitHub App** (a mesma configurada no projeto FinOmd). 
+
+### 2. Selecionar o Repositório
+Na lista de repositórios que a integração do GitHub App tem acesso, pesquise por `VanderOliver-IA/TEAmamos` e selecione-o.
+
+### 3. Configurações de Build
+O Coolify detectará automaticamente o Nixpacks. Como o projeto exige uma versão específica do Node para o Next.js, verifique as variáveis de ambiente ou deixe o `nixpacks.toml` já configurado na raiz cuidar disso:
+- **Porta (Ports Exposes):** `3000`
+- O script de start configurado internamente cuidará de repassar `HOSTNAME=0.0.0.0` para que o proxy do Coolify redirecione corretamente.
+
+### 4. Deploy
+Clique em **Deploy**. O painel passará a registrar os acionamentos com a tag `Webhook`, indicando que a integração nativa está operacional. Deploys subsequentes feitos através de `git push` no GitHub serão automáticos e únicos, sem duplicação ou gargalos.
+
+---
+
+## 📄 Versionamento
+
+Seguimos a Norma VibeDoCode. Para logs completos de atualização, consulte `atualizaçoes do projeto.md` e o Guardião de Contexto no `allchat-site.md`.

@@ -9,6 +9,7 @@
 | 3 | 24/06/2026 18:26 | Aplicar assets oficiais da marca TEAmamos e publicar V1.00.02 | `Codex` | `2026-06-24-teamamos-brand-assets-v10002` |
 | 4 | 24/06/2026 18:41 | Corrigir roteamento do standalone no Coolify e publicar V1.00.03 | `Codex` | `2026-06-24-teamamos-standalone-host-v10003` |
 | 5 | 24/06/2026 19:15 | Corrigir tamanho do BrandLogo e reverter Hero para variant icon (V1.00.04) | `Codex` | `2026-06-24-teamamos-logo-size-v10004` |
+| 6 | 24/06/2026 19:41 | Criar README.md completo e tutorial de deploy no Coolify (V1.00.05) | `Codex` | `2026-06-24-teamamos-readme-v10005` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -102,3 +103,20 @@
 
 🤖 **Antigravity** (`Codex`):
 > Investigou o código e constatou que a imagem `logo_quadrado_TEAmamos.png` (que tem fundo xadrez) não possuía regras rígidas de dimensionamento (`style={{ width: "auto", maxWidth: "100%" }}`) na tag Image do Next.js, fazendo com que inflasse. Corrigiu a estilização inline em `BrandLogo.tsx` e reverteu o `Hero.tsx` para usar o `variant="icon"` (o formato de coração, que é menor e não tem as bordas quadriculadas de preenchimento). Preparou o deploy da `V1.00.04`.
+
+## 💬 Conversa 6: 2026-06-24-teamamos-readme-v10005
+
+- **Data:** 24/06/2026 19:41
+- **ID da Conversa:** `2026-06-24-teamamos-readme-v10005`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `write_to_file`, `replace_file_content`, `run_command`
+- **Arquivos Envolvidos:** `README.md`, `package.json`, `src/lib/version.ts`, `atualizaçoes do projeto.md`, `allchat-site.md`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Solicitou a criação de um `README.md` decente para substituir o padrão do Next.js, incluindo explicações sobre o projeto TEAmamos e o tutorial de como fazer o deploy corretamente no Coolify (usando a integração nativa).
+
+🤖 **Antigravity** (`Codex`):
+> Sobrescreveu o `README.md` com um documento bem estruturado contendo a descrição da iniciativa, stack tecnológica, instruções de execução local e o guia passo a passo alertando sobre o uso obrigatório do "GitHub App" como source no Coolify. Atualizou o versionamento para `V1.00.05` e preparou o commit/push.
