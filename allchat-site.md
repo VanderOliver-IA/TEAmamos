@@ -13,6 +13,7 @@
 | 7 | 24/06/2026 19:44 | Corrigir erro EBUSY no build Nixpacks substituindo npm ci por npm install (V1.00.06) | `Codex` | `2026-06-24-teamamos-nixpacks-ebusy-v10006` |
 | 8 | 24/06/2026 19:56 | Corrigir 'no available server' no Traefik removendo modo standalone do Next (V1.00.07) | `Codex` | `2026-06-24-teamamos-traefik-standalone-v10007` |
 | 9 | 24/06/2026 20:13 | Restaurar HOSTNAME=0.0.0.0 no start para consertar o bind do Traefik (V1.00.08) | `Codex` | `2026-06-24-teamamos-bind-host-v10008` |
+| 10 | 24/06/2026 20:46 | Atualizar imagens transparentes e restaurar logo quadrada no Hero (V1.00.09) | `Codex` | `2026-06-24-teamamos-transparent-images-v10009` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -175,3 +176,20 @@
 🤖 **Antigravity** (`Codex`):
 > Detectou que ao remover o `standalone` na V1.00.07, acidentalmente removeu o comando `HOSTNAME=0.0.0.0` que havia colocado na V1.00.03. O Next.js estava fazendo bind em `127.0.0.1` (localhost), o que impedia o Traefik de acessar o contêiner pela rede Docker bridge, causando o erro de rota.
 > Restaurou o comando para `HOSTNAME=0.0.0.0 next start -p 3000` em `package.json`. Subiu a correção como `V1.00.08` e disparou via API do Coolify.
+
+## 💬 Conversa 10: 2026-06-24-teamamos-transparent-images-v10009
+
+- **Data:** 24/06/24 20:46
+- **ID da Conversa:** `2026-06-24-teamamos-transparent-images-v10009`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `replace_file_content`, `run_command`
+- **Arquivos Envolvidos:** `public/images/*`, `src/components/Hero.tsx`, `package.json`, `src/lib/version.ts`, `atualizaçoes do projeto.md`, `allchat-site.md`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Avisou que o deploy V1.00.08 funcionou, mas as imagens do site ainda apresentavam fundo quadriculado (que simulava transparência mas não era real). Informou que colocou as imagens PNGs corretas, realmente sem fundo, no diretório base do projeto e pediu para atualizar.
+
+🤖 **Antigravity** (`Codex`):
+> Copiou os novos PNGs do diretório `../images` para sobrescrever os antigos na pasta `public/images/`. Além disso, desfez a alteração da V1.00.04 no componente `Hero.tsx`, alterando a prop `variant` de `"icon"` de volta para `"square"`, agora que o logo quadrado não possui mais a anomalia visual do fundo xadrez. Comitou as mudanças como `V1.00.09` e acionou um novo deploy forçado via API do Coolify.
