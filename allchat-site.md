@@ -7,6 +7,7 @@
 | 1 | 24/06/2026 17:11 | Entender o projeto TEAmamos e corrigir falha de deploy no Coolify/Nixpacks | `Codex` | `2026-06-24-teamamos-deploy-node22` |
 | 2 | 24/06/2026 17:27 | Publicar a versão V1.00.01 no GitHub para disparar deploy automático no Coolify | `Codex` | `2026-06-24-teamamos-release-v10001` |
 | 3 | 24/06/2026 18:26 | Aplicar assets oficiais da marca TEAmamos e publicar V1.00.02 | `Codex` | `2026-06-24-teamamos-brand-assets-v10002` |
+| 4 | 24/06/2026 18:41 | Corrigir roteamento do standalone no Coolify e publicar V1.00.03 | `Codex` | `2026-06-24-teamamos-standalone-host-v10003` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -62,5 +63,24 @@
 
 🤖 **Antigravity** (`Codex`):
 > Processou os PNGs oficiais para transparência real, gerou favicon/ícones do App Router, criou componente reutilizável de marca, substituiu textos estilizados por imagens oficiais nos principais pontos da interface, alinhou o start de produção ao standalone do Next.js, incrementou a versão para `V1.00.02` e preparou validação, commit e deploy.
+
+---
+
+## 💬 Conversa 4: 2026-06-24-teamamos-standalone-host-v10003
+
+- **Data:** 24/06/2026 18:41
+- **ID da Conversa:** `2026-06-24-teamamos-standalone-host-v10003`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `exec_command`, `apply_patch`
+- **Arquivos Envolvidos:** `package.json`, `package-lock.json`, `src/lib/version.ts`, `atualizaçoes do projeto.md`, `allchat-site.md`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Pediu os ajustes de marca e deploy com as regras de versionamento e Guardião de Contexto.
+
+🤖 **Antigravity** (`Codex`):
+> Após o deploy da `V1.00.02`, verificou que o app subiu em modo standalone mas anunciou o hostname interno do container, causando `502` no proxy. Corrigiu o script de start para forçar `HOSTNAME=0.0.0.0`, incrementou a versão para `V1.00.03` e preparou novo deploy.
 
 ---
