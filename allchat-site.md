@@ -12,6 +12,7 @@
 | 6 | 24/06/2026 19:41 | Criar README.md completo e tutorial de deploy no Coolify (V1.00.05) | `Codex` | `2026-06-24-teamamos-readme-v10005` |
 | 7 | 24/06/2026 19:44 | Corrigir erro EBUSY no build Nixpacks substituindo npm ci por npm install (V1.00.06) | `Codex` | `2026-06-24-teamamos-nixpacks-ebusy-v10006` |
 | 8 | 24/06/2026 19:56 | Corrigir 'no available server' no Traefik removendo modo standalone do Next (V1.00.07) | `Codex` | `2026-06-24-teamamos-traefik-standalone-v10007` |
+| 9 | 24/06/2026 20:13 | Restaurar HOSTNAME=0.0.0.0 no start para consertar o bind do Traefik (V1.00.08) | `Codex` | `2026-06-24-teamamos-bind-host-v10008` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -156,3 +157,21 @@
 
 🤖 **Antigravity** (`Codex`):
 > Diagnosticou que o contêiner falhava ao iniciar porque estava configurado para output `standalone` no Next.js (`next.config.ts` e `package.json`). O modo `standalone` requer que a pasta `public` e os assets estáticos sejam copiados manualmente para dentro da subpasta `.next/standalone`, o que não acontece no ambiente automático do Nixpacks sem um Dockerfile customizado. Para resolver, removeu a configuração de `standalone` e reverteu o script de start para o padrão `next start`, permitindo que o Nixpacks rode o Next.js nativamente sem quebrar a rota de arquivos estáticos. Subiu a correção como `V1.00.07`.
+
+## 💬 Conversa 9: 2026-06-24-teamamos-bind-host-v10008
+
+- **Data:** 24/06/24 20:13
+- **ID da Conversa:** `2026-06-24-teamamos-bind-host-v10008`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `replace_file_content`, `run_command`
+- **Arquivos Envolvidos:** `package.json`, `src/lib/version.ts`, `atualizaçoes do projeto.md`, `allchat-site.md`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Retornou com screenshots mostrando que a V1.00.07 subiu e completou o build via disparo manual da API, mas a tela do navegador continuava com `no available server`. E que a trigger continuava como API.
+
+🤖 **Antigravity** (`Codex`):
+> Detectou que ao remover o `standalone` na V1.00.07, acidentalmente removeu o comando `HOSTNAME=0.0.0.0` que havia colocado na V1.00.03. O Next.js estava fazendo bind em `127.0.0.1` (localhost), o que impedia o Traefik de acessar o contêiner pela rede Docker bridge, causando o erro de rota.
+> Restaurou o comando para `HOSTNAME=0.0.0.0 next start -p 3000` em `package.json`. Subiu a correção como `V1.00.08` e disparou via API do Coolify.

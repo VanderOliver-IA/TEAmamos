@@ -1,5 +1,6 @@
 # Atualizaçoes do projeto
 
+- V1.00.08: Restauração da variável `HOSTNAME=0.0.0.0` no script `start` em conjunto com `next start -p 3000` para garantir que o contêiner Next.js se conecte corretamente ao Traefik, resolvendo de vez o erro "no available server".
 - V1.00.07: Remoção do `output: "standalone"` do Next.js e restauração do script `next start`. O standalone sem copiar a pasta `public` no ambiente Docker/Nixpacks causava erro 502/No available server no Traefik.
 - V1.00.06: Correção de erro `EBUSY` no build do Nixpacks substituindo `npm ci` por `npm install` no arquivo `nixpacks.toml` para evitar conflito com montagem de cache do Docker.
 - V1.00.05: Atualização do README.md com informações completas do projeto, stack tecnológico e instruções detalhadas de como realizar o deploy no Coolify utilizando a integração nativa GitHub App.
