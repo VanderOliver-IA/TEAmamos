@@ -11,6 +11,7 @@
 | 5 | 24/06/2026 19:15 | Corrigir tamanho do BrandLogo e reverter Hero para variant icon (V1.00.04) | `Codex` | `2026-06-24-teamamos-logo-size-v10004` |
 | 6 | 24/06/2026 19:41 | Criar README.md completo e tutorial de deploy no Coolify (V1.00.05) | `Codex` | `2026-06-24-teamamos-readme-v10005` |
 | 7 | 24/06/2026 19:44 | Corrigir erro EBUSY no build Nixpacks substituindo npm ci por npm install (V1.00.06) | `Codex` | `2026-06-24-teamamos-nixpacks-ebusy-v10006` |
+| 8 | 24/06/2026 19:56 | Corrigir 'no available server' no Traefik removendo modo standalone do Next (V1.00.07) | `Codex` | `2026-06-24-teamamos-traefik-standalone-v10007` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -138,3 +139,20 @@
 
 🤖 **Antigravity** (`Codex`):
 > Identificou o clássico conflito de cache do Nixpacks com o `npm ci`. O Nixpacks monta um volume em `.cache` para acelerar builds, mas o `npm ci` tenta deletar a pasta `node_modules` inteira antes de rodar, resultando em erro `EBUSY` na montagem do Docker. Separou as fases em `nixpacks.toml` e substituiu `npm ci` por `npm install` no bloco `[phases.install]`. Subiu a correção como `V1.00.06`.
+
+## 💬 Conversa 8: 2026-06-24-teamamos-traefik-standalone-v10007
+
+- **Data:** 24/06/24 19:56
+- **ID da Conversa:** `2026-06-24-teamamos-traefik-standalone-v10007`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `replace_file_content`, `run_command`
+- **Arquivos Envolvidos:** `next.config.ts`, `package.json`, `src/lib/version.ts`, `atualizaçoes do projeto.md`, `allchat-site.md`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Enviou screenshots mostrando que o deploy V1.00.06 completou com sucesso no Coolify, mas o Traefik retornava "no available server" (erro 502/503).
+
+🤖 **Antigravity** (`Codex`):
+> Diagnosticou que o contêiner falhava ao iniciar porque estava configurado para output `standalone` no Next.js (`next.config.ts` e `package.json`). O modo `standalone` requer que a pasta `public` e os assets estáticos sejam copiados manualmente para dentro da subpasta `.next/standalone`, o que não acontece no ambiente automático do Nixpacks sem um Dockerfile customizado. Para resolver, removeu a configuração de `standalone` e reverteu o script de start para o padrão `next start`, permitindo que o Nixpacks rode o Next.js nativamente sem quebrar a rota de arquivos estáticos. Subiu a correção como `V1.00.07`.
