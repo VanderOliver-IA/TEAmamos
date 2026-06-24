@@ -61,7 +61,7 @@ export function Hero() {
           className="flex justify-center mb-8"
         >
           <div className="animate-breathe">
-            <BrandLogo variant="square" priority className="h-48 sm:h-56 md:h-64 w-auto drop-shadow-lg" />
+            <BrandLogo variant="icon" priority className="h-40 sm:h-48 md:h-56 w-auto drop-shadow-lg" />
           </div>
         </motion.div>
 

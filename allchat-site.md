@@ -8,6 +8,7 @@
 | 2 | 24/06/2026 17:27 | Publicar a versão V1.00.01 no GitHub para disparar deploy automático no Coolify | `Codex` | `2026-06-24-teamamos-release-v10001` |
 | 3 | 24/06/2026 18:26 | Aplicar assets oficiais da marca TEAmamos e publicar V1.00.02 | `Codex` | `2026-06-24-teamamos-brand-assets-v10002` |
 | 4 | 24/06/2026 18:41 | Corrigir roteamento do standalone no Coolify e publicar V1.00.03 | `Codex` | `2026-06-24-teamamos-standalone-host-v10003` |
+| 5 | 24/06/2026 19:15 | Corrigir tamanho do BrandLogo e reverter Hero para variant icon (V1.00.04) | `Codex` | `2026-06-24-teamamos-logo-size-v10004` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -84,3 +85,20 @@
 > Após o deploy da `V1.00.02`, verificou que o app subiu em modo standalone mas anunciou o hostname interno do container, causando `502` no proxy. Corrigiu o script de start para forçar `HOSTNAME=0.0.0.0`, incrementou a versão para `V1.00.03` e preparou novo deploy.
 
 ---
+
+## 💬 Conversa 5: 2026-06-24-teamamos-logo-size-v10004
+
+- **Data:** 24/06/2026 19:15
+- **ID da Conversa:** `2026-06-24-teamamos-logo-size-v10004`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `replace_file_content`, `run_command`
+- **Arquivos Envolvidos:** `src/components/Hero.tsx`, `src/components/BrandLogo.tsx`, `package.json`, `src/lib/version.ts`, `atualizaçoes do projeto.md`, `allchat-site.md`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Relatou que a situação piorou ("piorou mais ainda") e enviou um print mostrando que a logo com fundo xadrez estava gigantesca ocupando a tela toda.
+
+🤖 **Antigravity** (`Codex`):
+> Investigou o código e constatou que a imagem `logo_quadrado_TEAmamos.png` (que tem fundo xadrez) não possuía regras rígidas de dimensionamento (`style={{ width: "auto", maxWidth: "100%" }}`) na tag Image do Next.js, fazendo com que inflasse. Corrigiu a estilização inline em `BrandLogo.tsx` e reverteu o `Hero.tsx` para usar o `variant="icon"` (o formato de coração, que é menor e não tem as bordas quadriculadas de preenchimento). Preparou o deploy da `V1.00.04`.

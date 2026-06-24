@@ -39,6 +39,7 @@ export function BrandLogo({ variant, className = "", priority = false }: BrandLo
       width={image.width}
       height={image.height}
       priority={priority}
+      style={{ width: "auto", maxWidth: "100%" }}
       className={`object-contain ${className}`}
     />
   );
