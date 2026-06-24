@@ -1,5 +1,6 @@
 # Atualizaçoes do projeto
 
+- V1.00.10: Quebra de cache das imagens da logo no Next.js adicionando o sufixo `_v2` aos arquivos PNG, garantindo que as novas versões sem fundo xadrez sejam carregadas imediatamente no navegador do cliente sem retenção pelo `node_modules/.cache/images`.
 - V1.00.09: Atualização das imagens PNG oficiais sem fundo xadrez e restauração da variação "square" do logo no componente Hero.
 - V1.00.08: Restauração da variável `HOSTNAME=0.0.0.0` no script `start` em conjunto com `next start -p 3000` para garantir que o contêiner Next.js se conecte corretamente ao Traefik, resolvendo de vez o erro "no available server".
 - V1.00.07: Remoção do `output: "standalone"` do Next.js e restauração do script `next start`. O standalone sem copiar a pasta `public` no ambiente Docker/Nixpacks causava erro 502/No available server no Traefik.

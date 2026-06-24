@@ -7,17 +7,17 @@ const BRAND_IMAGES = {
     height: 1254,
   },
   text: {
-    src: "/images/TEAmamos_sotexto.png",
+    src: "/images/TEAmamos_sotexto_v2.png",
     width: 1442,
     height: 445,
   },
   vertical: {
-    src: "/images/logo_vertical_TEAmamos.png",
+    src: "/images/logo_vertical_TEAmamos_v2.png",
     width: 2172,
     height: 724,
   },
   square: {
-    src: "/images/logo_quadrado_TEAmamos.png",
+    src: "/images/logo_quadrado_TEAmamos_v2.png",
     width: 1122,
     height: 1402,
   },

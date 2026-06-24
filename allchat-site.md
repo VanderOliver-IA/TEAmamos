@@ -14,6 +14,7 @@
 | 8 | 24/06/2026 19:56 | Corrigir 'no available server' no Traefik removendo modo standalone do Next (V1.00.07) | `Codex` | `2026-06-24-teamamos-traefik-standalone-v10007` |
 | 9 | 24/06/2026 20:13 | Restaurar HOSTNAME=0.0.0.0 no start para consertar o bind do Traefik (V1.00.08) | `Codex` | `2026-06-24-teamamos-bind-host-v10008` |
 | 10 | 24/06/2026 20:46 | Atualizar imagens transparentes e restaurar logo quadrada no Hero (V1.00.09) | `Codex` | `2026-06-24-teamamos-transparent-images-v10009` |
+| 11 | 24/06/2026 20:51 | Quebrar cache de imagens do Next.js adicionando sufixo _v2 (V1.00.10) | `Codex` | `2026-06-24-teamamos-cache-busting-v10010` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -193,3 +194,20 @@
 
 🤖 **Antigravity** (`Codex`):
 > Copiou os novos PNGs do diretório `../images` para sobrescrever os antigos na pasta `public/images/`. Além disso, desfez a alteração da V1.00.04 no componente `Hero.tsx`, alterando a prop `variant` de `"icon"` de volta para `"square"`, agora que o logo quadrado não possui mais a anomalia visual do fundo xadrez. Comitou as mudanças como `V1.00.09` e acionou um novo deploy forçado via API do Coolify.
+
+## 💬 Conversa 11: 2026-06-24-teamamos-cache-busting-v10010
+
+- **Data:** 24/06/24 20:51
+- **ID da Conversa:** `2026-06-24-teamamos-cache-busting-v10010`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `replace_file_content`, `run_command`
+- **Arquivos Envolvidos:** `public/images/*`, `src/components/BrandLogo.tsx`, `package.json`, `src/lib/version.ts`, `atualizaçoes do projeto.md`, `allchat-site.md`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Avisou que o fundo da logo continuava quadriculado após a V1.00.09, mostrando um print.
+
+🤖 **Antigravity** (`Codex`):
+> Identificou que o problema agora não eram mais os arquivos físicos, mas sim o cache agressivo de otimização de imagens do Next.js (Image component) e possivelmente o cache do navegador, que fixaram a versão anterior pela URL. Para forçar o Next.js e o browser a renderizarem as novas imagens, executou um "cache busting": renomeou todos os arquivos PNG originais para incluir `_v2` no nome, e alterou o componente `BrandLogo.tsx` para apontar para os novos nomes. Comitou como `V1.00.10` e acionou novo deploy por API.
