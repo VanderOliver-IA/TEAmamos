@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionReveal } from "./Animations";
-import { Heart, ArrowRight, ArrowLeft, Check, Loader2 } from "lucide-react";
+import { Heart, ArrowRight, ArrowLeft, Check, Loader2, X } from "lucide-react";
 import { BrandLogo, BrandName } from "./BrandLogo";
 
 const ROLE_OPTIONS = [
@@ -137,30 +137,12 @@ export function FormSection() {
     }
   };
 
-  if (submitted) {
-    return (
-      <section id="colabore" className="section-padding bg-teal/5">
-        <div className="max-w-2xl mx-auto text-center">
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="mb-8"
-          >
-            <div className="w-20 h-20 bg-teal rounded-full flex items-center justify-center mx-auto mb-6">
-              <Check size={40} className="text-white" />
-            </div>
-            <h2 className="font-nunito text-3xl font-extrabold text-marinho mb-4">
-              Obrigado por ajudar a construir o <BrandName />
-            </h2>
-            <p className="text-marinho/70 leading-relaxed">
-              Sua contribuição foi recebida. Cada relato, ideia e sugestão ajuda a aproximar o <BrandName />
-              de uma solução mais humana, prática e útil para famílias, pessoas neurodivergentes e profissionais.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-    );
-  }
+  const handleResetForm = () => {
+    setSubmitted(false);
+    setStep(0);
+    setData(INITIAL);
+    setError("");
+  };
 
   return (
     <section id="colabore" className="section-padding bg-gradient-to-b from-white to-teal/5">
@@ -518,6 +500,64 @@ export function FormSection() {
           Etapa {step + 1} de {STEP_TITLES.length} — Todas as etapas são opcionais, exceto nome, e-mail e perfil.
         </p>
       </div>
+
+      <AnimatePresence>
+        {submitted ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[70] flex items-center justify-center bg-marinho/45 px-4 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 24, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 16, scale: 0.98 }}
+              transition={{ duration: 0.24 }}
+              className="relative w-full max-w-xl rounded-3xl border border-white/70 bg-white p-8 shadow-[0_30px_100px_rgba(38,52,71,0.20)] sm:p-10"
+            >
+              <button
+                type="button"
+                onClick={() => setSubmitted(false)}
+                className="absolute right-4 top-4 rounded-full border border-areia-dark p-2 text-marinho/60 transition-colors hover:text-marinho"
+                aria-label="Fechar mensagem de confirmação"
+              >
+                <X size={18} />
+              </button>
+
+              <div className="text-center">
+                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-teal">
+                  <Check size={40} className="text-white" />
+                </div>
+                <h2 className="font-nunito text-3xl font-extrabold text-marinho mb-4">
+                  Obrigado por ajudar a construir o <BrandName />
+                </h2>
+                <p className="text-marinho/70 leading-relaxed">
+                  Sua contribuição foi recebida. Cada relato, ideia e sugestão ajuda a aproximar o <BrandName />
+                  de uma solução mais humana, prática e útil para famílias, pessoas neurodivergentes e profissionais.
+                </p>
+              </div>
+
+              <div className="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:justify-center">
+                <button
+                  type="button"
+                  onClick={() => setSubmitted(false)}
+                  className="btn-secondary justify-center"
+                >
+                  Continuar navegando
+                </button>
+                <button
+                  type="button"
+                  onClick={handleResetForm}
+                  className="btn-primary justify-center"
+                >
+                  Enviar outra colaboração
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </section>
   );
 }
