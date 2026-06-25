@@ -1,5 +1,6 @@
 # Atualizaçoes do projeto
 
+- V1.01.01: Correção do envio de colaboração em ambiente Vercel com fallback SQLite em `/tmp` para serverless, reforço do tratamento de falhas no salvamento e remoção do botão público de login do header.
 - V1.01.00: Expansão estratégica do TEAmamos para neurodiversidade, com novo posicionamento público, hero inclusivo, seção "Do TEA para a neurodiversidade", atualização de personalização, funcionalidades, público, responsabilidade, FAQ, SEO e formulário com novos campos para realidade acompanhada e necessidades específicas.
 - V1.00.15: Endurecimento do painel admin para ambiente Vercel, com fallback seguro quando Supabase/SQLite falharem, renderização dinâmica forçada nas páginas protegidas e navegação completa após login para estabilizar a sessão por cookie.
 - V1.00.14: Correção da logo principal no header para o asset `_v2`, inclusão de acesso direto ao admin com botões de login/logout no menu do site e tratamento explícito do bloqueio de preview da Vercel no formulário de autenticação.

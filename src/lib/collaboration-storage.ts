@@ -169,8 +169,13 @@ export async function saveCollaboration(input: CollaborationInput): Promise<Stor
     }
   }
 
-  saveCollaborationToSqlite(input);
-  return "sqlite";
+  try {
+    saveCollaborationToSqlite(input);
+    return "sqlite";
+  } catch (error) {
+    console.error("SQLite save failed:", error);
+    throw error;
+  }
 }
 
 async function listCollaborationsFromSupabase() {

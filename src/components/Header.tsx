@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Heart, LogIn, LogOut, Shield } from "lucide-react";
+import { Heart, LogOut } from "lucide-react";
 import { BrandLogo } from "./BrandLogo";
 
 const NAV_ITEMS = [
@@ -58,11 +58,6 @@ export function Header() {
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleAdminAccess = () => {
-    setMenuOpen(false);
-    window.location.href = adminAuthenticated ? "/admin" : "/admin/login";
-  };
-
   const handleAdminLogout = async () => {
     setAdminLoading(true);
     try {
@@ -115,13 +110,6 @@ export function Header() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal rounded-full transition-all group-hover:w-full" />
               </button>
             ))}
-            <button
-              onClick={handleAdminAccess}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-marinho/75 transition-colors hover:text-marinho"
-            >
-              <Shield size={16} />
-              {adminAuthenticated ? "Painel" : "Login"}
-            </button>
             {adminAuthenticated ? (
               <button
                 onClick={() => void handleAdminLogout()}
@@ -178,13 +166,6 @@ export function Header() {
                 {item.label}
               </button>
             ))}
-            <button
-              onClick={handleAdminAccess}
-              className="flex items-center gap-2 py-2 text-left text-base font-medium text-marinho/80 hover:text-marinho"
-            >
-              <LogIn size={16} />
-              {adminAuthenticated ? "Abrir painel admin" : "Entrar no admin"}
-            </button>
             {adminAuthenticated ? (
               <button
                 onClick={() => void handleAdminLogout()}

@@ -21,6 +21,7 @@
 | 15 | 25/06/2026 18:45 | Corrigir logo principal, acesso ao admin no header e mensagem de bloqueio da Vercel Preview (V1.00.14) | `Codex` | `2026-06-25-teamamos-admin-access-v10014` |
 | 16 | 25/06/2026 18:58 | Estabilizar sessão e fallback do painel admin na Vercel (V1.00.15) | `Codex` | `2026-06-25-teamamos-admin-session-v10015` |
 | 17 | 25/06/2026 19:22 | Expandir o posicionamento do site para neurodiversidade e subir V1.01.00 | `Codex` | `2026-06-25-teamamos-neurodiversidade-v10100` |
+| 18 | 25/06/2026 19:40 | Corrigir envio de colaboração na Vercel e remover botão público de login (V1.01.01) | `Codex` | `2026-06-25-teamamos-collab-fallback-v10101` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -319,3 +320,20 @@
 
 🤖 **Antigravity** (`Codex`):
 > Reposicionou a landing para comunicar o TEAmamos como uma plataforma em construção para pessoas neurodivergentes, sem apagar sua origem no TEA. Criou a nova seção "Do TEA para a neurodiversidade", atualizou hero, nome, personalização, funcionalidades, público, responsabilidade, construção coletiva, roadmap, idealizador, FAQ e SEO. Também ampliou o formulário com perfis e realidades mais inclusivas, adicionou persistência para novos campos no backend e registrou a mudança como `V1.01.00 — Expansão para Neurodiversidade`.
+
+## 💬 Conversa 18: 2026-06-25-teamamos-collab-fallback-v10101
+
+- **Data:** 25/06/2026 19:40 -03
+- **ID da Conversa:** `2026-06-25-teamamos-collab-fallback-v10101`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `exec_command`, `apply_patch`, `write_stdin`
+- **Arquivos Envolvidos:** `src/lib/db.ts`, `src/lib/collaboration-storage.ts`, `src/components/Header.tsx`, `package.json`, `package-lock.json`, `src/lib/version.ts`, `atualizaçoes do projeto.md`, `allchat-site.md`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Reportou erro ao tentar enviar a colaboração pelo formulário público e pediu a remoção do botão de login do header por ficar exposto para qualquer visitante.
+
+🤖 **Antigravity** (`Codex`):
+> Reproduziu o erro `500` do endpoint `/api/colaborar` em produção, ajustou o fallback SQLite para usar `/tmp/teamamos.db` em ambiente Vercel serverless, reforçou o tratamento de falhas no salvamento e removeu o atalho público de login do header mantendo apenas logout quando houver sessão ativa. Validou a aplicação com lint e build e publicou a correção como `V1.01.01`.
