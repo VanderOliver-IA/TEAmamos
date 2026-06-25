@@ -47,14 +47,9 @@ export function BrandLogo({ variant, className = "", priority = false }: BrandLo
 
 export function BrandName({ className = "" }: { className?: string }) {
   return (
-    <span className={`inline-flex align-[-0.14em] ${className}`}>
-      <Image
-        src={BRAND_IMAGES.text.src}
-        alt="TEAmamos"
-        width={BRAND_IMAGES.text.width}
-        height={BRAND_IMAGES.text.height}
-        className="h-[1.05em] w-auto object-contain"
-      />
+    <span className={`inline-block whitespace-nowrap font-nunito font-extrabold tracking-normal ${className}`}>
+      <span className="text-marinho">TEA</span>
+      <span className="text-coral">mamos</span>
     </span>
   );
 }

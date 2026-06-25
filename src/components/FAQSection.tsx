@@ -53,9 +53,9 @@ export function FAQSection() {
             FAQ
           </span>
           <h2 className="font-nunito text-3xl sm:text-4xl md:text-5xl font-extrabold text-marinho mb-6">
-            Perguntas importantes
+            Antes de colaborar,
             <br />
-            <span className="text-azul">antes de colaborar.</span>
+            <span className="text-azul">talvez você queira saber isso.</span>
           </h2>
         </SectionReveal>
 

@@ -137,6 +137,14 @@ export function FormSection() {
           </p>
         </SectionReveal>
 
+        <SectionReveal delay={0.08} className="mb-10">
+          <div className="rounded-xl border border-teal/20 bg-white/85 px-5 py-5 text-center shadow-sm">
+            <p className="font-nunito text-xl sm:text-2xl font-extrabold leading-snug text-marinho">
+              Sua rotina pode revelar uma funcionalidade que nenhuma equipe técnica pensaria sozinha.
+            </p>
+          </div>
+        </SectionReveal>
+
         {/* Progress bar with puzzle pieces */}
         <div className="flex items-center justify-center gap-2 mb-10">
           {STEP_TITLES.map((_, i) => (

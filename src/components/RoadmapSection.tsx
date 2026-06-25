@@ -88,6 +88,14 @@ export function RoadmapSection() {
           </h2>
         </SectionReveal>
 
+        <SectionReveal delay={0.08} className="mb-10">
+          <div className="rounded-xl border border-teal/25 bg-white/85 px-5 py-4 text-center shadow-sm">
+            <p className="text-sm sm:text-base font-semibold leading-relaxed text-marinho">
+              Agora estamos nas etapas 01 e 02: apresentação pública e escuta da comunidade.
+            </p>
+          </div>
+        </SectionReveal>
+
         {/* Timeline */}
         <div ref={ref} className="relative">
           {/* Vertical line */}
@@ -101,6 +109,7 @@ export function RoadmapSection() {
           <div className="space-y-6">
             {STEPS.map((step, idx) => {
               const colors = COLOR_MAP[step.color];
+              const isActive = step.status === "active";
               return (
                 <motion.div
                   key={step.num}
@@ -110,17 +119,27 @@ export function RoadmapSection() {
                   className="relative pl-16"
                 >
                   {/* Dot */}
-                  <div className={`absolute left-4 top-5 w-5 h-5 rounded-full ${colors.dot} border-4 border-areia z-10 ${step.status === "active" ? "animate-pulse-glow" : ""}`} />
+                  <div
+                    className={`absolute left-3.5 top-[1.125rem] z-10 h-6 w-6 rounded-full ${colors.dot} border-4 border-areia ${
+                      isActive ? "animate-pulse-glow shadow-lg ring-4 ring-white" : ""
+                    }`}
+                  />
 
-                  <div className={`${colors.bg} border ${colors.border} rounded-xl p-5 ${step.status === "upcoming" ? "opacity-60" : ""}`}>
+                  <div
+                    className={`border ${colors.border} rounded-xl p-5 transition-all duration-300 ${
+                      isActive
+                        ? "bg-white shadow-lg shadow-teal/10 ring-2 ring-teal/15"
+                        : `${colors.bg} opacity-60`
+                    }`}
+                  >
                     <div className="flex items-center gap-3 mb-2">
                       <span className={`font-nunito font-extrabold text-sm ${colors.text}`}>
                         {step.num}
                       </span>
                       <h3 className="font-nunito font-bold text-marinho">{step.title}</h3>
-                      {step.status === "active" && (
-                        <span className="text-[10px] font-semibold bg-teal text-white rounded-full px-2 py-0.5 uppercase">
-                          Agora
+                      {isActive && (
+                        <span className="text-[10px] font-semibold bg-teal text-white rounded-full px-2.5 py-1 uppercase tracking-wide">
+                          Em andamento
                         </span>
                       )}
                     </div>

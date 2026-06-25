@@ -65,11 +65,20 @@ export function Hero() {
           </div>
         </motion.div>
 
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 2.35 }}
+          className="font-nunito text-xl sm:text-2xl font-extrabold text-teal mb-4"
+        >
+          Antes de criar, queremos ouvir.
+        </motion.p>
+
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 2.4 }}
+          transition={{ duration: 0.7, delay: 2.5 }}
           className="font-nunito text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-marinho leading-tight mb-6"
         >
           <BrandName className="text-[1.12em]" />

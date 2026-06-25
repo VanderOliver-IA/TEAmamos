@@ -15,6 +15,7 @@
 | 9 | 24/06/2026 20:13 | Restaurar HOSTNAME=0.0.0.0 no start para consertar o bind do Traefik (V1.00.08) | `Codex` | `2026-06-24-teamamos-bind-host-v10008` |
 | 10 | 24/06/2026 20:46 | Atualizar imagens transparentes e restaurar logo quadrada no Hero (V1.00.09) | `Codex` | `2026-06-24-teamamos-transparent-images-v10009` |
 | 11 | 24/06/2026 20:51 | Quebrar cache de imagens do Next.js adicionando sufixo _v2 (V1.00.10) | `Codex` | `2026-06-24-teamamos-cache-busting-v10010` |
+| 12 | 25/06/2026 14:36 | Refinar narrativa, acessibilidade da marca e destaque do roadmap (V1.00.11) | `Codex` | `2026-06-25-teamamos-strategic-copy-v10011` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -211,3 +212,20 @@
 
 🤖 **Antigravity** (`Codex`):
 > Identificou que o problema agora não eram mais os arquivos físicos, mas sim o cache agressivo de otimização de imagens do Next.js (Image component) e possivelmente o cache do navegador, que fixaram a versão anterior pela URL. Para forçar o Next.js e o browser a renderizarem as novas imagens, executou um "cache busting": renomeou todos os arquivos PNG originais para incluir `_v2` no nome, e alterou o componente `BrandLogo.tsx` para apontar para os novos nomes. Comitou como `V1.00.10` e acionou novo deploy por API.
+
+## 💬 Conversa 12: 2026-06-25-teamamos-strategic-copy-v10011
+
+- **Data:** 25/06/2026 14:36 -03
+- **ID da Conversa:** `2026-06-25-teamamos-strategic-copy-v10011`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `exec_command`, `apply_patch`
+- **Arquivos Envolvidos:** `src/components/BrandLogo.tsx`, `src/components/Hero.tsx`, `src/components/FormSection.tsx`, `src/components/FAQSection.tsx`, `src/components/RoadmapSection.tsx`, `package.json`, `package-lock.json`, `src/lib/version.ts`, `atualizaçoes do projeto.md`, `allchat-site.md`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Analisou o site publicado e solicitou refinamentos estratégicos: evitar o uso da logo como imagem em textos corridos, reforçar a primeira dobra com "Antes de criar, queremos ouvir.", preparar emocionalmente o formulário, tornar o FAQ mais convidativo e destacar que as etapas 01 e 02 do roadmap estão em andamento.
+
+🤖 **Antigravity** (`Codex`):
+> Substituiu o uso inline da logo em `BrandName` por texto real estilizado com as cores da marca, preservando imagens oficiais apenas em áreas visuais de marca. Adicionou a frase de impacto no Hero, criou um bloco emocional antes do formulário, renomeou o título do FAQ e reforçou visualmente as etapas ativas do roadmap. Atualizou a versão para `V1.00.11`, registrou o changelog e preparou validação, commit, push e deploy via API do Coolify.
