@@ -23,6 +23,7 @@
 | 17 | 25/06/2026 19:22 | Expandir o posicionamento do site para neurodiversidade e subir V1.01.00 | `Codex` | `2026-06-25-teamamos-neurodiversidade-v10100` |
 | 18 | 25/06/2026 19:40 | Corrigir envio de colaboração na Vercel e remover botão público de login (V1.01.01) | `Codex` | `2026-06-25-teamamos-collab-fallback-v10101` |
 | 19 | 25/06/2026 19:52 | Reenviar release para disparar novo deploy na Vercel após configurar variáveis (V1.01.02) | `Codex` | `2026-06-25-teamamos-redeploy-v10102` |
+| 20 | 25/06/2026 20:05 | Restringir fallback SQLite ao desenvolvimento e exigir Supabase na produção (V1.01.03) | `Codex` | `2026-06-25-teamamos-prod-supabase-v10103` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -355,3 +356,20 @@
 
 🤖 **Antigravity** (`Codex`):
 > Gerou uma nova liberação mínima apenas para disparar a integração GitHub/Vercel de forma compatível com as regras de versionamento do projeto. Incrementou a versão para `V1.01.02`, atualizou o changelog e reenviou a branch `main` para forçar um novo deployment com as variáveis já configuradas na Vercel.
+
+## 💬 Conversa 20: 2026-06-25-teamamos-prod-supabase-v10103
+
+- **Data:** 25/06/2026 20:05 -03
+- **ID da Conversa:** `2026-06-25-teamamos-prod-supabase-v10103`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `exec_command`, `apply_patch`, `write_stdin`
+- **Arquivos Envolvidos:** `src/lib/collaboration-storage.ts`, `package.json`, `package-lock.json`, `src/lib/version.ts`, `atualizaçoes do projeto.md`, `allchat-site.md`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Observou que, se existe fallback em SQL, ele precisa funcionar e ser acessível, mas reforçou que o Supabase deve ser a fonte principal. Informou também que já executou o SQL de atualização do schema no Supabase.
+
+🤖 **Antigravity** (`Codex`):
+> Validou que, após o ajuste do schema, novos envios já estavam entrando com `provider: supabase`. Identificou que a colaboração anterior não aparecia porque havia sido gravada no fallback SQLite temporário. Em seguida, removeu o fallback silencioso da produção para evitar essa ambiguidade: em Vercel, se o Supabase falhar, a aplicação passa a falhar claramente em vez de registrar localmente. O fallback SQLite fica disponível apenas para desenvolvimento local. Publicou a correção como `V1.01.03`.

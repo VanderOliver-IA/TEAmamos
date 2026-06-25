@@ -1,5 +1,6 @@
 # Atualizaçoes do projeto
 
+- V1.01.03: Ajuste da estratégia de fallback para que a produção use Supabase como fonte obrigatória, sem cair silenciosamente em SQLite na Vercel; o fallback local fica restrito ao ambiente de desenvolvimento.
 - V1.01.02: Release de redeploy para reenviar o projeto ao GitHub/Vercel após configuração manual das variáveis de ambiente no painel da Vercel.
 - V1.01.01: Correção do envio de colaboração em ambiente Vercel com fallback SQLite em `/tmp` para serverless, reforço do tratamento de falhas no salvamento e remoção do botão público de login do header.
 - V1.01.00: Expansão estratégica do TEAmamos para neurodiversidade, com novo posicionamento público, hero inclusivo, seção "Do TEA para a neurodiversidade", atualização de personalização, funcionalidades, público, responsabilidade, FAQ, SEO e formulário com novos campos para realidade acompanhada e necessidades específicas.

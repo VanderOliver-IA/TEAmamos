@@ -63,6 +63,10 @@ export type CollaborationListResult = {
   warning: string | null;
 };
 
+function shouldUseSqliteFallback() {
+  return !process.env.VERCEL && process.env.NODE_ENV !== "production";
+}
+
 function toNullableString(value?: string) {
   return value?.trim() ? value.trim() : null;
 }
@@ -165,7 +169,10 @@ export async function saveCollaboration(input: CollaborationInput): Promise<Stor
       await saveCollaborationToSupabase(input);
       return "supabase";
     } catch (error) {
-      console.error("Supabase save failed, falling back to SQLite:", error);
+      console.error("Supabase save failed:", error);
+      if (!shouldUseSqliteFallback()) {
+        throw error;
+      }
     }
   }
 
@@ -314,9 +321,17 @@ export async function listCollaborations(): Promise<CollaborationListResult> {
       const maybeError = error as { code?: string; message?: string };
       const baseWarning = maybeError?.code === "PGRST205"
         ? "O Supabase está configurado, mas a tabela public.colaboracoes ainda não foi criada. Rode o arquivo supabase/schema.sql no SQL Editor."
-        : "Não foi possível carregar as colaborações no Supabase. O painel está usando o fallback local.";
+        : "Não foi possível carregar as colaborações no Supabase.";
 
-      console.error("Supabase list failed, falling back to SQLite:", error);
+      console.error("Supabase list failed:", error);
+      if (!shouldUseSqliteFallback()) {
+        return {
+          provider: "supabase",
+          records: [],
+          warning: `${baseWarning} O fallback local fica disponível apenas no ambiente de desenvolvimento.`,
+        };
+      }
+
       const sqliteFallback = listCollaborationsFromSqliteSafely();
       return {
         provider: "sqlite",
