@@ -18,6 +18,7 @@
 | 12 | 25/06/2026 14:36 | Refinar narrativa, acessibilidade da marca e destaque do roadmap (V1.00.11) | `Codex` | `2026-06-25-teamamos-strategic-copy-v10011` |
 | 13 | 25/06/2026 15:13 | Preparar integração Supabase com fallback para SQLite (V1.00.12) | `Codex` | `2026-06-25-teamamos-supabase-prep-v10012` |
 | 14 | 25/06/2026 17:34 | Criar primeiro painel admin com super admin e leitura das colaborações (V1.00.13) | `Codex` | `2026-06-25-teamamos-admin-panel-v10013` |
+| 15 | 25/06/2026 18:45 | Corrigir logo principal, acesso ao admin no header e mensagem de bloqueio da Vercel Preview (V1.00.14) | `Codex` | `2026-06-25-teamamos-admin-access-v10014` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -265,3 +266,20 @@
 
 🤖 **Antigravity** (`Codex`):
 > Implementou a primeira área administrativa do TEAmamos com login em `/admin/login`, sessão HTTP-only assinada no servidor, dashboard protegido em `/admin` e listagem das colaborações com indicação clara do provedor ativo (Supabase ou fallback local). Também expandiu o schema do Supabase para incluir a tabela `admin_users` com seed do super admin inicial e atualizou a documentação operacional para V1.00.13.
+
+## 💬 Conversa 15: 2026-06-25-teamamos-admin-access-v10014
+
+- **Data:** 25/06/2026 18:45 -03
+- **ID da Conversa:** `2026-06-25-teamamos-admin-access-v10014`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `exec_command`, `apply_patch`
+- **Arquivos Envolvidos:** `src/components/BrandLogo.tsx`, `src/components/Header.tsx`, `src/components/AdminLoginForm.tsx`, `src/app/api/admin/session/route.ts`, `package.json`, `package-lock.json`, `src/lib/version.ts`, `atualizaçoes do projeto.md`, `allchat-site.md`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Reportou que a logo principal estava quebrada, pediu um botão de login/logout para não depender da URL `/admin/login` e informou que o painel abria, mas o login retornava erro ao usar usuário e senha.
+
+🤖 **Antigravity** (`Codex`):
+> Corrigiu o header para usar o asset oficial `logo_icone_TEAmamos_v2.png`, adicionou leitura de sessão com a nova rota `/api/admin/session` para exibir acesso direto ao admin e logout no menu, e ajustou o formulário de login para identificar quando o domínio de preview da Vercel intercepta a autenticação com SSO. Também validou que o login funciona no domínio público `tea-mauve.vercel.app` com as credenciais do super admin e registrou a versão V1.00.14.

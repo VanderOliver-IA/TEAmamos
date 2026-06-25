@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const BRAND_IMAGES = {
   icon: {
-    src: "/images/logo_icone_TEAmamos.png",
+    src: "/images/logo_icone_TEAmamos_v2.png",
     width: 1254,
     height: 1254,
   },

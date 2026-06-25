@@ -1,5 +1,6 @@
 # Atualizaçoes do projeto
 
+- V1.00.14: Correção da logo principal no header para o asset `_v2`, inclusão de acesso direto ao admin com botões de login/logout no menu do site e tratamento explícito do bloqueio de preview da Vercel no formulário de autenticação.
 - V1.00.13: Criação do primeiro painel administrativo com login em `/admin/login`, sessão HTTP-only, super admin inicial de Vanderson Oliveira, dashboard protegido para leitura das colaborações e expansão do schema Supabase com `admin_users`.
 - V1.00.12: Preparação da camada Supabase com cliente server-side, schema SQL versionado em `supabase/schema.sql`, rota `/api/colaborar` integrada com fallback automático para SQLite e documentação de variáveis de ambiente.
 - V1.00.11: Refinamento estratégico da landing com nome TEAmamos em texto real nos textos corridos, nova frase de impacto no Hero, bloco emocional antes do formulário, FAQ mais convidativo e destaque visual das etapas 01 e 02 do roadmap.

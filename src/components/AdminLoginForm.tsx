@@ -23,9 +23,19 @@ export function AdminLoginForm() {
         body: JSON.stringify({ email, password }),
       });
 
-      const payload = (await response.json()) as { error?: string };
+      const contentType = response.headers.get("content-type") ?? "";
+      const receivedHtml = contentType.includes("text/html") || response.redirected;
+      const payload = contentType.includes("application/json")
+        ? ((await response.json()) as { error?: string })
+        : null;
       if (!response.ok) {
-        throw new Error(payload.error ?? "Falha ao entrar.");
+        if (receivedHtml) {
+          throw new Error(
+            "Este deploy está protegido pela Vercel. Use o domínio público principal do projeto para entrar no admin."
+          );
+        }
+
+        throw new Error(payload?.error ?? "Falha ao entrar no admin.");
       }
 
       router.push("/admin");
