@@ -19,6 +19,7 @@
 | 13 | 25/06/2026 15:13 | Preparar integração Supabase com fallback para SQLite (V1.00.12) | `Codex` | `2026-06-25-teamamos-supabase-prep-v10012` |
 | 14 | 25/06/2026 17:34 | Criar primeiro painel admin com super admin e leitura das colaborações (V1.00.13) | `Codex` | `2026-06-25-teamamos-admin-panel-v10013` |
 | 15 | 25/06/2026 18:45 | Corrigir logo principal, acesso ao admin no header e mensagem de bloqueio da Vercel Preview (V1.00.14) | `Codex` | `2026-06-25-teamamos-admin-access-v10014` |
+| 16 | 25/06/2026 18:58 | Estabilizar sessão e fallback do painel admin na Vercel (V1.00.15) | `Codex` | `2026-06-25-teamamos-admin-session-v10015` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -283,3 +284,20 @@
 
 🤖 **Antigravity** (`Codex`):
 > Corrigiu o header para usar o asset oficial `logo_icone_TEAmamos_v2.png`, adicionou leitura de sessão com a nova rota `/api/admin/session` para exibir acesso direto ao admin e logout no menu, e ajustou o formulário de login para identificar quando o domínio de preview da Vercel intercepta a autenticação com SSO. Também validou que o login funciona no domínio público `tea-mauve.vercel.app` com as credenciais do super admin e registrou a versão V1.00.14.
+
+## 💬 Conversa 16: 2026-06-25-teamamos-admin-session-v10015
+
+- **Data:** 25/06/2026 18:58 -03
+- **ID da Conversa:** `2026-06-25-teamamos-admin-session-v10015`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `exec_command`, `apply_patch`
+- **Arquivos Envolvidos:** `src/lib/collaboration-storage.ts`, `src/components/AdminLoginForm.tsx`, `src/app/admin/page.tsx`, `src/app/admin/login/page.tsx`, `package.json`, `package-lock.json`, `src/lib/version.ts`, `atualizaçoes do projeto.md`, `allchat-site.md`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Informou que o erro continuava ao inserir a senha do admin, com falha ao abrir `/admin` após a autenticação.
+
+🤖 **Antigravity** (`Codex`):
+> Reproduziu o fluxo em produção e preview, confirmou que a senha e o hash do super admin estavam corretos, isolou interferência da SSO da Vercel nos domínios de preview e endureceu o painel para não quebrar caso o Supabase ou o fallback SQLite falhem no ambiente serverless. Também trocou o redirecionamento SPA por navegação completa após o login e forçou renderização dinâmica nas rotas protegidas, publicando a correção como `V1.00.15`.

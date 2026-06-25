@@ -1,11 +1,9 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { useRouter } from "next/navigation";
 import { LockKeyhole, Mail } from "lucide-react";
 
 export function AdminLoginForm() {
-  const router = useRouter();
   const [email, setEmail] = useState("omd.vandersonoliveira@gmail.com");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -38,8 +36,7 @@ export function AdminLoginForm() {
         throw new Error(payload?.error ?? "Falha ao entrar no admin.");
       }
 
-      router.push("/admin");
-      router.refresh();
+      window.location.assign("/admin");
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : "Falha ao entrar.");
     } finally {

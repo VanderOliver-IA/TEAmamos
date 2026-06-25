@@ -263,6 +263,22 @@ function listCollaborationsFromSqlite(): CollaborationRecord[] {
   }));
 }
 
+function listCollaborationsFromSqliteSafely() {
+  try {
+    return {
+      records: listCollaborationsFromSqlite(),
+      warning: null,
+    };
+  } catch (error) {
+    console.error("SQLite fallback failed while listing collaborations:", error);
+    return {
+      records: [] as CollaborationRecord[],
+      warning:
+        "Nao foi possivel carregar as colaboracoes neste ambiente. Verifique as variaveis do Supabase na Vercel para o painel funcionar sem depender do fallback local.",
+    };
+  }
+}
+
 export async function listCollaborations(): Promise<CollaborationListResult> {
   if (isSupabaseConfigured()) {
     try {
@@ -274,22 +290,26 @@ export async function listCollaborations(): Promise<CollaborationListResult> {
       };
     } catch (error) {
       const maybeError = error as { code?: string; message?: string };
-      const warning = maybeError?.code === "PGRST205"
+      const baseWarning = maybeError?.code === "PGRST205"
         ? "O Supabase está configurado, mas a tabela public.colaboracoes ainda não foi criada. Rode o arquivo supabase/schema.sql no SQL Editor."
         : "Não foi possível carregar as colaborações no Supabase. O painel está usando o fallback local.";
 
       console.error("Supabase list failed, falling back to SQLite:", error);
+      const sqliteFallback = listCollaborationsFromSqliteSafely();
       return {
         provider: "sqlite",
-        records: listCollaborationsFromSqlite(),
-        warning,
+        records: sqliteFallback.records,
+        warning: sqliteFallback.warning ?? baseWarning,
       };
     }
   }
 
+  const sqliteFallback = listCollaborationsFromSqliteSafely();
   return {
     provider: "sqlite",
-    records: listCollaborationsFromSqlite(),
-    warning: "Supabase ainda não está configurado neste ambiente. O painel está usando o fallback local.",
+    records: sqliteFallback.records,
+    warning:
+      sqliteFallback.warning ??
+      "Supabase ainda não está configurado neste ambiente. O painel está usando o fallback local.",
   };
 }
