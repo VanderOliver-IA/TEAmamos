@@ -16,6 +16,7 @@
 | 10 | 24/06/2026 20:46 | Atualizar imagens transparentes e restaurar logo quadrada no Hero (V1.00.09) | `Codex` | `2026-06-24-teamamos-transparent-images-v10009` |
 | 11 | 24/06/2026 20:51 | Quebrar cache de imagens do Next.js adicionando sufixo _v2 (V1.00.10) | `Codex` | `2026-06-24-teamamos-cache-busting-v10010` |
 | 12 | 25/06/2026 14:36 | Refinar narrativa, acessibilidade da marca e destaque do roadmap (V1.00.11) | `Codex` | `2026-06-25-teamamos-strategic-copy-v10011` |
+| 13 | 25/06/2026 15:13 | Preparar integração Supabase com fallback para SQLite (V1.00.12) | `Codex` | `2026-06-25-teamamos-supabase-prep-v10012` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -229,3 +230,20 @@
 
 🤖 **Antigravity** (`Codex`):
 > Substituiu o uso inline da logo em `BrandName` por texto real estilizado com as cores da marca, preservando imagens oficiais apenas em áreas visuais de marca. Adicionou a frase de impacto no Hero, criou um bloco emocional antes do formulário, renomeou o título do FAQ e reforçou visualmente as etapas ativas do roadmap. Atualizou a versão para `V1.00.11`, registrou o changelog e preparou validação, commit, push e deploy via API do Coolify.
+
+## 💬 Conversa 13: 2026-06-25-teamamos-supabase-prep-v10012
+
+- **Data:** 25/06/2026 15:13 -03
+- **ID da Conversa:** `2026-06-25-teamamos-supabase-prep-v10012`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `exec_command`, `apply_patch`
+- **Arquivos Envolvidos:** `package.json`, `package-lock.json`, `src/lib/version.ts`, `src/app/api/colaborar/route.ts`, `src/lib/supabase.ts`, `src/lib/collaboration-storage.ts`, `supabase/schema.sql`, `README.md`, `atualizaçoes do projeto.md`, `allchat-site.md`, `.env.local`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Informou que criou um projeto Supabase para o TEAmamos, depois adicionou as credenciais em uma pasta `env seguro` e pediu para preparar a base do projeto para usar esse banco.
+
+🤖 **Antigravity** (`Codex`):
+> Validou a `service_role` no Supabase, confirmou que o projeto estava acessível por API e identificou que ainda não existiam tabelas públicas para receber dados do formulário. Implementou uma camada server-side de integração com Supabase, criou o schema SQL versionado da tabela `public.colaboracoes`, adaptou a rota `/api/colaborar` para usar Supabase com fallback automático para SQLite enquanto o banco remoto não estiver provisionado e documentou a configuração via `.env.local`.

@@ -12,7 +12,7 @@ O **TEAmamos** nasce para ajudar famílias, pessoas TEA, cuidadores e profission
 - **Biblioteca UI:** React 19
 - **Estilização:** Tailwind CSS v4
 - **Animações:** Framer Motion & GSAP
-- **Banco de Dados (Local):** SQLite (`better-sqlite3`)
+- **Banco de Dados:** Supabase (quando configurado) + fallback local em SQLite (`better-sqlite3`)
 - **Validação de Dados:** Zod + React Hook Form
 - **Infraestrutura/Deploy:** Docker + Nixpacks (via Coolify)
 
@@ -33,11 +33,20 @@ O **TEAmamos** nasce para ajudar famílias, pessoas TEA, cuidadores e profission
    ```bash
    npm install
    ```
-3. Inicie o servidor de desenvolvimento:
+3. Configure as variáveis de ambiente em `.env.local`:
+   ```bash
+   NEXT_PUBLIC_SUPABASE_URL=
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=
+   SUPABASE_SERVICE_ROLE_KEY=
+   ```
+4. No Supabase, execute o schema disponível em `supabase/schema.sql` no SQL Editor para criar a tabela `public.colaboracoes`.
+5. Inicie o servidor de desenvolvimento:
    ```bash
    npm run dev
    ```
-4. Acesse `http://localhost:3000` no seu navegador.
+6. Acesse `http://localhost:3000` no seu navegador.
+
+Sem as variáveis acima ou sem a tabela criada, o projeto continua aceitando colaborações com fallback automático para o SQLite local em `data/teamamos.db`.
 
 ---
 
