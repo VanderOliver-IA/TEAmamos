@@ -17,6 +17,7 @@
 | 11 | 24/06/2026 20:51 | Quebrar cache de imagens do Next.js adicionando sufixo _v2 (V1.00.10) | `Codex` | `2026-06-24-teamamos-cache-busting-v10010` |
 | 12 | 25/06/2026 14:36 | Refinar narrativa, acessibilidade da marca e destaque do roadmap (V1.00.11) | `Codex` | `2026-06-25-teamamos-strategic-copy-v10011` |
 | 13 | 25/06/2026 15:13 | Preparar integração Supabase com fallback para SQLite (V1.00.12) | `Codex` | `2026-06-25-teamamos-supabase-prep-v10012` |
+| 14 | 25/06/2026 17:34 | Criar primeiro painel admin com super admin e leitura das colaborações (V1.00.13) | `Codex` | `2026-06-25-teamamos-admin-panel-v10013` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -247,3 +248,20 @@
 
 🤖 **Antigravity** (`Codex`):
 > Validou a `service_role` no Supabase, confirmou que o projeto estava acessível por API e identificou que ainda não existiam tabelas públicas para receber dados do formulário. Implementou uma camada server-side de integração com Supabase, criou o schema SQL versionado da tabela `public.colaboracoes`, adaptou a rota `/api/colaborar` para usar Supabase com fallback automático para SQLite enquanto o banco remoto não estiver provisionado e documentou a configuração via `.env.local`.
+
+## 💬 Conversa 14: 2026-06-25-teamamos-admin-panel-v10013
+
+- **Data:** 25/06/2026 17:34 -03
+- **ID da Conversa:** `2026-06-25-teamamos-admin-panel-v10013`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `exec_command`, `apply_patch`
+- **Arquivos Envolvidos:** `src/app/admin/page.tsx`, `src/app/admin/login/page.tsx`, `src/app/api/admin/login/route.ts`, `src/app/api/admin/logout/route.ts`, `src/components/AdminLoginForm.tsx`, `src/lib/admin-auth.ts`, `src/lib/admin-config.ts`, `src/lib/collaboration-storage.ts`, `supabase/schema.sql`, `README.md`, `package.json`, `package-lock.json`, `src/lib/version.ts`, `atualizaçoes do projeto.md`, `allchat-site.md`, `.env.local`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Pediu a criação de um painel administrativo com acesso protegido, definindo desde já Vanderson Oliveira como super admin com acesso total. Inicialmente, o admin deveria servir para visualizar as mensagens enviadas pelos colaboradores.
+
+🤖 **Antigravity** (`Codex`):
+> Implementou a primeira área administrativa do TEAmamos com login em `/admin/login`, sessão HTTP-only assinada no servidor, dashboard protegido em `/admin` e listagem das colaborações com indicação clara do provedor ativo (Supabase ou fallback local). Também expandiu o schema do Supabase para incluir a tabela `admin_users` com seed do super admin inicial e atualizou a documentação operacional para V1.00.13.

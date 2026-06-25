@@ -13,6 +13,7 @@ O **TEAmamos** nasce para ajudar famílias, pessoas TEA, cuidadores e profission
 - **Estilização:** Tailwind CSS v4
 - **Animações:** Framer Motion & GSAP
 - **Banco de Dados:** Supabase (quando configurado) + fallback local em SQLite (`better-sqlite3`)
+- **Painel Admin:** autenticação server-side com sessão HTTP-only
 - **Validação de Dados:** Zod + React Hook Form
 - **Infraestrutura/Deploy:** Docker + Nixpacks (via Coolify)
 
@@ -38,8 +39,9 @@ O **TEAmamos** nasce para ajudar famílias, pessoas TEA, cuidadores e profission
    NEXT_PUBLIC_SUPABASE_URL=
    NEXT_PUBLIC_SUPABASE_ANON_KEY=
    SUPABASE_SERVICE_ROLE_KEY=
+   ADMIN_SESSION_SECRET=
    ```
-4. No Supabase, execute o schema disponível em `supabase/schema.sql` no SQL Editor para criar a tabela `public.colaboracoes`.
+4. No Supabase, execute o schema disponível em `supabase/schema.sql` no SQL Editor para criar as tabelas `public.colaboracoes` e `public.admin_users`.
 5. Inicie o servidor de desenvolvimento:
    ```bash
    npm run dev
@@ -47,6 +49,15 @@ O **TEAmamos** nasce para ajudar famílias, pessoas TEA, cuidadores e profission
 6. Acesse `http://localhost:3000` no seu navegador.
 
 Sem as variáveis acima ou sem a tabela criada, o projeto continua aceitando colaborações com fallback automático para o SQLite local em `data/teamamos.db`.
+
+### Primeiro acesso ao admin
+
+- URL local: `http://localhost:3000/admin/login`
+- URL online: `/admin/login`
+- Usuário inicial: `omd.vandersonoliveira@gmail.com`
+- Senha inicial: `Entrar2026@`
+
+O painel administrativo atual foi criado para visualizar as mensagens enviadas pelos colaboradores. Quando o Supabase ainda não estiver provisionado, o painel exibe um aviso e usa fallback local.
 
 ---
 
