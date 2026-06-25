@@ -23,9 +23,9 @@ export function CollaborateSection() {
             <span className="text-teal">não será criada sozinho.</span>
           </h2>
           <p className="text-marinho/70 max-w-2xl mx-auto leading-relaxed mb-8">
-            O <BrandName /> precisa nascer da escuta. Pais, mães, pessoas TEA, familiares, cuidadores,
-            terapeutas, professores e profissionais de inclusão vivem detalhes que nenhum planejamento
-            isolado consegue prever.
+            O <BrandName /> precisa nascer da escuta. Pais, mães, pessoas neurodivergentes, pessoas TEA,
+            pessoas com TDAH, familiares, cuidadores, terapeutas, professores, profissionais de
+            inclusão e pessoas em investigação vivem detalhes que nenhum planejamento isolado consegue prever.
           </p>
         </SectionReveal>
 
@@ -36,11 +36,11 @@ export function CollaborateSection() {
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 "Quais dores aparecem todos os dias",
-                "Quais informações são mais difíceis de organizar",
+                "Quais desafios aparecem na rotina neurodivergente",
+                "Quais necessidades mudam de acordo com cada diagnóstico ou perfil",
                 "Quais apps já foram testados",
-                "O que funcionou",
-                "O que não funcionou",
-                "Quais recursos fariam diferença real",
+                "Quais recursos ajudam em TEA, TDAH, dislexia, TOD, altas habilidades e outros contextos",
+                "Como evitar que o sistema seja infantilizado ou limitado a um único público",
                 "Quais cuidados precisam existir desde o início",
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3 p-3 bg-white rounded-lg">

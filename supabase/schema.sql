@@ -18,10 +18,12 @@ create table if not exists public.colaboracoes (
   cidade text,
   perfil text not null,
   relacao_tea text,
+  realidade_acompanhada jsonb not null default '[]'::jsonb,
   idade_tea text,
   nivel_suporte text,
   maior_dificuldade jsonb not null default '[]'::jsonb,
   dificuldade_texto text,
+  necessidade_contexto text,
   recurso_desejado text,
   apps_usados text,
   o_que_funcionou text,
@@ -35,6 +37,9 @@ create table if not exists public.colaboracoes (
   status text not null default 'recebido',
   criado_em timestamptz not null default timezone('utc', now())
 );
+
+alter table public.colaboracoes add column if not exists realidade_acompanhada jsonb not null default '[]'::jsonb;
+alter table public.colaboracoes add column if not exists necessidade_contexto text;
 
 create index if not exists idx_colaboracoes_email on public.colaboracoes (email);
 create index if not exists idx_colaboracoes_criado_em on public.colaboracoes (criado_em desc);

@@ -9,32 +9,36 @@ import { BrandName } from "./BrandLogo";
 
 const FAQS: { q: ReactNode; a: ReactNode }[] = [
   {
+    q: <>O <BrandName /> é apenas para TEA?</>,
+    a: "Não. O TEAmamos nasceu da vivência com o TEA, mas está sendo estruturado para apoiar diferentes pessoas neurodivergentes, incluindo TEA, TDAH, dislexia, TOD, altas habilidades, deficiência intelectual, síndromes, transtornos de aprendizagem e perfis em investigação.",
+  },
+  {
+    q: "Por que o nome continua TEAmamos?",
+    a: "Porque o projeto nasceu de uma história real com o TEA. O nome carrega essa origem, mas a proposta cresceu para acolher a neurodiversidade de forma mais ampla.",
+  },
+  {
+    q: "O sistema vai diagnosticar alguma condição?",
+    a: "Não. O TEAmamos não realiza diagnóstico, não classifica pessoas e não substitui avaliação médica, psicológica, terapêutica ou pedagógica.",
+  },
+  {
+    q: "Pessoas com TDAH poderão usar?",
+    a: "Sim. Recursos como rotina, lembretes, agenda, tarefas, medicação, escola, foco, organização e relatórios podem ser úteis para pessoas com TDAH e suas famílias.",
+  },
+  {
+    q: "Pessoas sem diagnóstico fechado podem participar?",
+    a: "Sim. Muitas famílias estão em fase de investigação ou ainda tentando entender quais apoios são necessários. O sistema deve permitir uso sem exigir diagnóstico fechado.",
+  },
+  {
+    q: "O app será infantil?",
+    a: "Não. O TEAmamos deve ser pensado para crianças, adolescentes e adultos, com linguagem, visual e recursos adaptáveis para cada fase da vida.",
+  },
+  {
     q: <>O <BrandName /> já existe?</>,
     a: "Ainda não. O projeto está em fase de apresentação, pesquisa e colaboração pública. Esta landing page é o primeiro passo para ouvir a comunidade antes de construir o sistema.",
   },
   {
-    q: <>O <BrandName /> será um aplicativo?</>,
-    a: "A ideia inicial é criar um sistema ou aplicativo completo. A estrutura final será definida após ouvir a comunidade e entender as necessidades reais de quem vive o TEA.",
-  },
-  {
     q: "Quem pode colaborar?",
-    a: "Pais, mães, pessoas TEA, familiares, cuidadores, profissionais de saúde, profissionais de educação e pessoas interessadas em tecnologia assistiva. Toda contribuição é bem-vinda.",
-  },
-  {
-    q: "O sistema será gratuito?",
-    a: "Essa decisão ainda será estudada. O foco atual é entender as necessidades reais para construir a melhor primeira versão possível, priorizando o impacto social.",
-  },
-  {
-    q: <>O <BrandName /> faz diagnóstico?</>,
-    a: <>Não. O <BrandName /> não diagnostica, não prescreve e não substitui profissionais. É uma ferramenta de organização e apoio ao cuidado.</>,
-  },
-  {
-    q: "Pessoas TEA adultas podem participar?",
-    a: "Sim! O projeto não quer infantilizar o TEA. Pessoas TEA adolescentes e adultas são muito bem-vindas e sua perspectiva é essencial para o projeto.",
-  },
-  {
-    q: "Profissionais podem sugerir funcionalidades?",
-    a: "Sim. A contribuição de profissionais é essencial para construir um sistema responsável, útil e bem estruturado. Queremos ouvir terapeutas, educadores, médicos e especialistas.",
+    a: "Pais, mães, pessoas neurodivergentes, pessoas TEA, pessoas com TDAH, familiares, cuidadores, profissionais de saúde, profissionais de educação e pessoas interessadas em tecnologia assistiva. Toda contribuição é bem-vinda.",
   },
   {
     q: "Como os dados serão usados?",

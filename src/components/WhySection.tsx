@@ -54,12 +54,17 @@ export function WhySection() {
               <p>
                 O <BrandName /> nasce da vivência real de <strong className="text-marinho">Vanderson Oliveira</strong>,
                 pai de uma filha autista, que vive de perto os desafios, descobertas e necessidades que
-                fazem parte da rotina de uma família TEA.
+                fazem parte da rotina de uma família que organiza cuidado todos os dias.
               </p>
               <p>
                 Na prática, o cuidado não acontece em uma única tela. Ele está na escola, na terapia,
                 no WhatsApp, nos horários de medicação, nas crises, nas consultas, nos relatórios, nas
                 anotações e na memória cansada de quem tenta dar conta de tudo.
+              </p>
+              <p>
+                Foi nesse caminho que ficou claro: o TEA é a raiz emocional do projeto, mas a dor da
+                desorganização também atravessa famílias neurodivergentes que vivem o TDAH, a dislexia,
+                o TOD, atrasos no desenvolvimento, síndromes e perfis em investigação.
               </p>
               <p className="text-marinho font-semibold text-lg border-l-4 border-teal pl-4">
                 Muitas famílias não precisam de mais uma ferramenta complicada.

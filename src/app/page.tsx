@@ -4,6 +4,7 @@ import { Preloader } from "@/components/Preloader";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { WhySection } from "@/components/WhySection";
+import { NeurodiversitySection } from "@/components/NeurodiversitySection";
 import { NameSection } from "@/components/NameSection";
 import { ChaosSection } from "@/components/ChaosSection";
 import { OrganizeSection } from "@/components/OrganizeSection";
@@ -26,6 +27,7 @@ export default function Home() {
       <main>
         <Hero />
         <WhySection />
+        <NeurodiversitySection />
         <NameSection />
         <ChaosSection />
         <OrganizeSection />

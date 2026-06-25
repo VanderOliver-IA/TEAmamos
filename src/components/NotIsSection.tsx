@@ -5,14 +5,14 @@ import { X, Check } from "lucide-react";
 import { BrandName } from "./BrandLogo";
 
 const NOT_IS = [
-  { text: "diagnóstico", tip: "O sistema não identifica TEA nem substitui avaliação profissional." },
+  { text: "diagnóstico", tip: "O sistema não identifica TEA, TDAH ou qualquer outra neurodivergência, transtorno, síndrome ou condição. Ele não substitui avaliação profissional." },
   { text: "prescrição", tip: "Não sugere nem indica medicamentos ou tratamentos." },
   { text: "substituto de médicos", tip: "Profissionais são insubstituíveis no acompanhamento." },
   { text: "substituto de terapeutas", tip: "O sistema não faz papel terapêutico." },
-  { text: "cura", tip: "O TEA não é doença. O sistema é uma ferramenta de apoio." },
+  { text: "cura", tip: "Neurodivergência não deve ser tratada como defeito. O sistema é uma ferramenta de apoio, organização e cuidado." },
   { text: "promessa milagrosa", tip: "Honestidade e responsabilidade guiam o projeto." },
-  { text: "controle rígido", tip: "Respeita a individualidade da pessoa TEA." },
-  { text: "sistema para rotular", tip: "Personalização para apoiar, não para classificar." },
+  { text: "controle rígido", tip: "Respeita a individualidade de cada pessoa neurodivergente." },
+  { text: "sistema para rotular", tip: "O objetivo é apoiar, entender padrões e criar previsibilidade, não classificar pessoas." },
 ];
 
 const IS = [
@@ -20,7 +20,7 @@ const IS = [
   "central de rotina",
   "registro de informações",
   "ferramenta de previsibilidade",
-  "apoio para famílias",
+  "apoio para famílias neurodivergentes",
   "ponte com profissionais",
   "recurso de cuidado",
   "plataforma personalizável",
@@ -84,6 +84,11 @@ export function NotIsSection() {
                   </li>
                 ))}
               </ul>
+              <p className="mt-6 text-sm leading-relaxed text-marinho/70">
+                O <BrandName /> não tem a função de rotular pessoas. O objetivo é ajudar famílias e
+                pessoas neurodivergentes a organizarem informações, entenderem padrões e criarem mais
+                previsibilidade no dia a dia.
+              </p>
             </div>
           </SectionReveal>
         </div>

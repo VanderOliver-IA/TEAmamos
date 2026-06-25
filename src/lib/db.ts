@@ -27,6 +27,7 @@ export function getDb(): Database.Database {
         cidade TEXT,
         perfil TEXT NOT NULL,
         relacao_tea TEXT,
+        realidade_acompanhada TEXT,
         idade_tea TEXT,
         nivel_suporte TEXT,
         aceita_entrevista INTEGER DEFAULT 0,
@@ -41,6 +42,7 @@ export function getDb(): Database.Database {
         colaborador_id INTEGER NOT NULL,
         maior_dificuldade TEXT,
         dificuldade_texto TEXT,
+        necessidade_contexto TEXT,
         recurso_desejado TEXT,
         apps_usados TEXT,
         o_que_funcionou TEXT,
@@ -50,6 +52,16 @@ export function getDb(): Database.Database {
         FOREIGN KEY (colaborador_id) REFERENCES colaboradores(id)
       );
     `);
+
+    const collaboratorColumns = db.prepare("PRAGMA table_info(colaboradores)").all() as Array<{ name: string }>;
+    if (!collaboratorColumns.some((column) => column.name === "realidade_acompanhada")) {
+      db.exec("ALTER TABLE colaboradores ADD COLUMN realidade_acompanhada TEXT");
+    }
+
+    const contributionColumns = db.prepare("PRAGMA table_info(contribuicoes)").all() as Array<{ name: string }>;
+    if (!contributionColumns.some((column) => column.name === "necessidade_contexto")) {
+      db.exec("ALTER TABLE contribuicoes ADD COLUMN necessidade_contexto TEXT");
+    }
   }
 
   return db;

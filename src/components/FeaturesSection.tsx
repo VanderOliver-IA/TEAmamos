@@ -7,34 +7,39 @@ import { ChevronDown } from "lucide-react";
 
 const CATEGORIES = [
   {
-    title: "Perfil da pessoa TEA",
+    title: "Perfil individual personalizado",
     color: "teal",
-    items: ["Cadastro individual", "Nível de suporte", "Em avaliação", "Preferências", "Sensibilidades", "Hiperfocos", "Dificuldades", "Habilidades", "Campo livre"],
+    items: ["Diagnóstico ou hipótese", "Características", "Necessidades", "Forças", "Dificuldades", "Sensibilidades", "Preferências", "Perfil em investigação"],
   },
   {
     title: "Rotina e previsibilidade",
     color: "coral",
-    items: ["Rotina visual", "Agenda", "Lembretes", "Compromissos escolares", "Atividades", "Transições", "Alertas"],
+    items: ["Agenda visual", "Horários", "Tarefas", "Transições", "Compromissos", "Mudanças de rotina", "Alertas"],
   },
   {
-    title: "Saúde e terapias",
+    title: "Saúde, medicamentos e terapias",
     color: "mostarda",
-    items: ["Medicamentos", "Consultas", "Terapias", "Profissionais", "Observações", "Histórico"],
+    items: ["Medicamentos", "Consultas", "Profissionais", "Terapias", "Observações", "Histórico"],
   },
   {
-    title: "Crises, gatilhos e regulação",
+    title: "Escola, aprendizagem e adaptações",
     color: "azul",
-    items: ["Registro de crises", "Intensidade", "Possíveis gatilhos", "Estratégias que ajudaram", "Tempo de recuperação", "Observações"],
+    items: ["Compromissos escolares", "Provas", "Comunicados", "Adaptações", "PEI", "Dificuldades", "Evolução"],
+  },
+  {
+    title: "Crises, gatilhos e autorregulação",
+    color: "teal",
+    items: ["Registro de momentos difíceis", "Gatilhos", "Estratégias que ajudam", "Recursos calmantes", "Plano de apoio"],
   },
   {
     title: "Evolução e relatórios",
-    color: "teal",
-    items: ["Diário de evolução", "Padrões", "Gráficos simples", "Relatórios para profissionais", "Exportação", "Compartilhamento com consentimento"],
+    color: "coral",
+    items: ["Registros organizados", "Padrões", "Relatórios para família", "Profissionais", "Escola", "Consultas"],
   },
   {
     title: "Família e rede de apoio",
-    color: "coral",
-    items: ["Múltiplos cuidadores", "Permissões", "Compartilhamento seguro", "Histórico de alterações", "Comunicação com escola ou profissional"],
+    color: "mostarda",
+    items: ["Responsáveis", "Cuidadores", "Terapeutas", "Professores", "Permissões", "Compartilhamento com consentimento"],
   },
 ];
 

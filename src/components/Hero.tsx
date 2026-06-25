@@ -85,7 +85,7 @@ export function Hero() {
           <span className="text-marinho">: </span>
           <br className="hidden sm:block" />
           <span className="text-marinho/90 text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem]">
-            um sistema em construção para organizar o cuidado de quem vive o TEA de perto.
+            um sistema em construção para organizar o cuidado, a rotina e a previsibilidade de pessoas neurodivergentes.
           </span>
         </motion.h1>
 
@@ -97,8 +97,10 @@ export function Hero() {
           className="font-inter text-base sm:text-lg text-marinho/70 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
           Idealizado por <strong className="text-marinho">Vanderson Oliveira</strong>, pai de uma filha
-          autista, o <BrandName /> nasce para ajudar famílias, pessoas TEA, cuidadores e profissionais a
-          transformarem rotina, informações e acompanhamento em mais previsibilidade, clareza e cuidado.
+          autista, o <BrandName /> nasce da vivência real com o TEA e se expande para apoiar famílias,
+          pessoas neurodivergentes, cuidadores e profissionais na organização da rotina, dos
+          tratamentos, dos compromissos, da escola, dos medicamentos, da autorregulação e do
+          acompanhamento diário.
         </motion.p>
 
         {/* CTAs */}

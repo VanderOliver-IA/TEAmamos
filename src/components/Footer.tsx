@@ -42,8 +42,9 @@ export function Footer() {
           {/* Description */}
           <p className="text-white/60 text-sm max-w-lg mx-auto leading-relaxed mb-8">
             O <BrandName className="rounded-sm bg-white/90 px-1" /> é um projeto em construção colaborativa, idealizado por Vanderson Oliveira,
-            para criar uma ferramenta mais humana, prática e organizada para pessoas TEA, famílias,
-            cuidadores e profissionais.
+            para criar uma ferramenta mais humana, prática e organizada para pessoas neurodivergentes,
+            famílias, cuidadores, escolas e profissionais. Nasceu da vivência com o TEA e cresceu
+            para acolher a neurodiversidade.
           </p>
 
           {/* CTA */}

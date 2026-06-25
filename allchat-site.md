@@ -20,6 +20,7 @@
 | 14 | 25/06/2026 17:34 | Criar primeiro painel admin com super admin e leitura das colaborações (V1.00.13) | `Codex` | `2026-06-25-teamamos-admin-panel-v10013` |
 | 15 | 25/06/2026 18:45 | Corrigir logo principal, acesso ao admin no header e mensagem de bloqueio da Vercel Preview (V1.00.14) | `Codex` | `2026-06-25-teamamos-admin-access-v10014` |
 | 16 | 25/06/2026 18:58 | Estabilizar sessão e fallback do painel admin na Vercel (V1.00.15) | `Codex` | `2026-06-25-teamamos-admin-session-v10015` |
+| 17 | 25/06/2026 19:22 | Expandir o posicionamento do site para neurodiversidade e subir V1.01.00 | `Codex` | `2026-06-25-teamamos-neurodiversidade-v10100` |
 
 ## 💬 Conversa 1: 2026-06-24-teamamos-deploy-node22
 
@@ -301,3 +302,20 @@
 
 🤖 **Antigravity** (`Codex`):
 > Reproduziu o fluxo em produção e preview, confirmou que a senha e o hash do super admin estavam corretos, isolou interferência da SSO da Vercel nos domínios de preview e endureceu o painel para não quebrar caso o Supabase ou o fallback SQLite falhem no ambiente serverless. Também trocou o redirecionamento SPA por navegação completa após o login e forçou renderização dinâmica nas rotas protegidas, publicando a correção como `V1.00.15`.
+
+## 💬 Conversa 17: 2026-06-25-teamamos-neurodiversidade-v10100
+
+- **Data:** 25/06/2026 19:22 -03
+- **ID da Conversa:** `2026-06-25-teamamos-neurodiversidade-v10100`
+- **Agente(s) Aplicado(s):** `Codex`
+- **LLM Ativa:** `GPT-5 Codex`
+- **Ferramentas Utilizadas:** `exec_command`, `apply_patch`, `write_stdin`
+- **Arquivos Envolvidos:** `src/app/page.tsx`, `src/app/layout.tsx`, `src/components/Hero.tsx`, `src/components/WhySection.tsx`, `src/components/NeurodiversitySection.tsx`, `src/components/NameSection.tsx`, `src/components/UniqueSection.tsx`, `src/components/FeaturesSection.tsx`, `src/components/AudienceSection.tsx`, `src/components/NotIsSection.tsx`, `src/components/CollaborateSection.tsx`, `src/components/RoadmapSection.tsx`, `src/components/AboutSection.tsx`, `src/components/FormSection.tsx`, `src/components/FAQSection.tsx`, `src/components/Footer.tsx`, `src/app/api/colaborar/route.ts`, `src/lib/collaboration-storage.ts`, `src/lib/db.ts`, `supabase/schema.sql`, `package.json`, `package-lock.json`, `src/lib/version.ts`, `atualizaçoes do projeto.md`, `allchat-site.md`
+
+### Diálogo
+
+🧑 **Usuário**:
+> Enviou um prompt extenso pedindo a reestruturação estratégica do site TEAmamos para ampliar o posicionamento além do TEA, preservando a origem emocional do projeto e abrindo a plataforma para neurodiversidade.
+
+🤖 **Antigravity** (`Codex`):
+> Reposicionou a landing para comunicar o TEAmamos como uma plataforma em construção para pessoas neurodivergentes, sem apagar sua origem no TEA. Criou a nova seção "Do TEA para a neurodiversidade", atualizou hero, nome, personalização, funcionalidades, público, responsabilidade, construção coletiva, roadmap, idealizador, FAQ e SEO. Também ampliou o formulário com perfis e realidades mais inclusivas, adicionou persistência para novos campos no backend e registrou a mudança como `V1.01.00 — Expansão para Neurodiversidade`.

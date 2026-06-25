@@ -6,12 +6,40 @@ import { SectionReveal } from "./Animations";
 import { Heart, ArrowRight, ArrowLeft, Check, Loader2 } from "lucide-react";
 import { BrandLogo, BrandName } from "./BrandLogo";
 
-const ROLE_OPTIONS = ["Pai/Mãe", "Pessoa TEA", "Familiar", "Cuidador(a)", "Profissional", "Educador(a)", "Outro"];
+const ROLE_OPTIONS = [
+  "Pai/Mãe",
+  "Pessoa neurodivergente",
+  "Pessoa TEA",
+  "Pessoa com TDAH",
+  "Familiar",
+  "Cuidador(a)",
+  "Profissional da saúde",
+  "Terapeuta",
+  "Educador(a)",
+  "Profissional de inclusão",
+  "Pessoa em investigação",
+  "Outro",
+];
+const REALITY_OPTIONS = [
+  "TEA",
+  "TDAH",
+  "Dislexia",
+  "TOD",
+  "Altas habilidades/superdotação",
+  "Deficiência intelectual",
+  "Síndrome de Down",
+  "Transtorno de aprendizagem",
+  "Ansiedade",
+  "Atraso no desenvolvimento",
+  "Em investigação",
+  "Outra",
+  "Prefiro não informar",
+];
 const SUPPORT_LEVELS = ["Nível 1", "Nível 2", "Nível 3", "Em avaliação", "Não informado", "Prefiro não classificar"];
 const PAIN_CATEGORIES = [
   "Rotina", "Comunicação", "Alimentação", "Sono", "Escola", "Terapias",
   "Medicamentos", "Crises", "Sensorial", "Autonomia", "Socialização",
-  "Organização de informações", "Outro",
+  "Organização de informações", "Atenção e foco", "Autorregulação", "Outro",
 ];
 
 type FormData = {
@@ -21,10 +49,12 @@ type FormData = {
   cidade: string;
   perfil: string;
   relacao_tea: string;
+  realidade_acompanhada: string[];
   idade_tea: string;
   nivel_suporte: string;
   maior_dificuldade: string[];
   dificuldade_texto: string;
+  necessidade_contexto: string;
   recurso_desejado: string;
   apps_usados: string;
   o_que_funcionou: string;
@@ -38,13 +68,15 @@ type FormData = {
 
 const INITIAL: FormData = {
   nome: "", email: "", whatsapp: "", cidade: "", perfil: "", relacao_tea: "",
+  realidade_acompanhada: [],
   idade_tea: "", nivel_suporte: "", maior_dificuldade: [], dificuldade_texto: "",
+  necessidade_contexto: "",
   recurso_desejado: "", apps_usados: "", o_que_funcionou: "", o_que_nao_funcionou: "",
   funcionalidade_indispensavel: "", aceita_entrevista: false, aceita_beta: false,
   aceita_atualizacoes: true, aceita_termos: false,
 };
 
-const STEP_TITLES = ["Quem é você?", "Sua relação com o TEA", "Dores da rotina", "Ideias para o sistema", "Participação futura"];
+const STEP_TITLES = ["Quem é você?", "Sua realidade", "Dores da rotina", "Ideias para o sistema", "Participação futura"];
 const COLORS = ["bg-teal", "bg-coral", "bg-mostarda", "bg-azul"];
 
 export function FormSection() {
@@ -64,6 +96,15 @@ export function FormSection() {
       maior_dificuldade: prev.maior_dificuldade.includes(cat)
         ? prev.maior_dificuldade.filter((c) => c !== cat)
         : [...prev.maior_dificuldade, cat],
+    }));
+  };
+
+  const toggleReality = (item: string) => {
+    setData((prev) => ({
+      ...prev,
+      realidade_acompanhada: prev.realidade_acompanhada.includes(item)
+        ? prev.realidade_acompanhada.filter((value) => value !== item)
+        : [...prev.realidade_acompanhada, item],
     }));
   };
 
@@ -113,7 +154,7 @@ export function FormSection() {
             </h2>
             <p className="text-marinho/70 leading-relaxed">
               Sua contribuição foi recebida. Cada relato, ideia e sugestão ajuda a aproximar o <BrandName />
-              de uma solução mais humana, prática e útil para famílias, pessoas TEA e profissionais.
+              de uma solução mais humana, prática e útil para famílias, pessoas neurodivergentes e profissionais.
             </p>
           </motion.div>
         </div>
@@ -133,7 +174,7 @@ export function FormSection() {
           </h2>
           <p className="text-marinho/70 max-w-lg mx-auto">
             Sua experiência pode ajudar a criar uma ferramenta mais humana, prática e útil para famílias,
-            pessoas TEA e profissionais.
+            pessoas neurodivergentes, escolas e profissionais.
           </p>
         </SectionReveal>
 
@@ -178,7 +219,7 @@ export function FormSection() {
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.3 }}
             >
-              {step === 0 && (
+          {step === 0 && (
                 <div className="space-y-5">
                   <div>
                     <label className="block text-sm font-medium text-marinho mb-2">Nome *</label>
@@ -240,16 +281,30 @@ export function FormSection() {
               {step === 1 && (
                 <div className="space-y-5">
                   <div>
-                    <label className="block text-sm font-medium text-marinho mb-2">Qual sua relação com o TEA?</label>
+                    <label className="block text-sm font-medium text-marinho mb-2">Qual realidade você vive ou acompanha?</label>
+                    <div className="flex flex-wrap gap-2">
+                      {REALITY_OPTIONS.map((item) => (
+                        <button
+                          key={item}
+                          onClick={() => toggleReality(item)}
+                          className={`chip ${data.realidade_acompanhada.includes(item) ? "selected" : ""}`}
+                        >
+                          {item}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-marinho mb-2">Conte um pouco sobre sua relação com essa realidade</label>
                     <textarea
                       value={data.relacao_tea}
                       onChange={(e) => update("relacao_tea", e.target.value)}
                       className="form-input min-h-[100px] resize-none"
-                      placeholder="Conte sobre sua relação com o TEA..."
+                      placeholder="Conte sobre a realidade que você vive ou acompanha..."
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-marinho mb-2">Idade da pessoa TEA (se quiser informar)</label>
+                    <label className="block text-sm font-medium text-marinho mb-2">Idade da pessoa acompanhada (se quiser informar)</label>
                     <input
                       type="text"
                       value={data.idade_tea}
@@ -259,7 +314,7 @@ export function FormSection() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-marinho mb-2">Nível de suporte (se quiser informar)</label>
+                    <label className="block text-sm font-medium text-marinho mb-2">Nível de suporte ou contexto atual (se quiser informar)</label>
                     <div className="flex flex-wrap gap-2">
                       {SUPPORT_LEVELS.map((level) => (
                         <button
@@ -302,6 +357,17 @@ export function FormSection() {
                       onChange={(e) => update("dificuldade_texto", e.target.value)}
                       className="form-input min-h-[120px] resize-none"
                       placeholder="Compartilhe sua experiência..."
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-marinho mb-2">
+                      Existe alguma necessidade, característica ou desafio que você gostaria que o sistema considerasse?
+                    </label>
+                    <textarea
+                      value={data.necessidade_contexto}
+                      onChange={(e) => update("necessidade_contexto", e.target.value)}
+                      className="form-input min-h-[100px] resize-none"
+                      placeholder="Ex: rigidez de rotina, hiperfoco, comunicação alternativa, ansiedade, impulsividade, sensibilidades..."
                     />
                   </div>
                 </div>

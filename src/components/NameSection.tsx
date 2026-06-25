@@ -18,7 +18,7 @@ const CARDS = [
     title: "amamos",
     color: "border-coral bg-coral/5",
     textColor: "text-coral",
-    description: "Representa vínculo, cuidado e presença. O amor que sustenta a rotina de tantas famílias que vivem o TEA de perto.",
+    description: "Representa vínculo, cuidado e presença. O amor que sustenta a rotina de tantas famílias neurodivergentes no dia a dia.",
   },
   {
     id: "teamamos",
@@ -87,9 +87,20 @@ export function NameSection() {
 
         {/* Emotional quote */}
         <SectionReveal delay={0.4} className="mt-16 text-center">
-          <blockquote className="font-nunito text-xl sm:text-2xl font-bold text-marinho/80 italic max-w-2xl mx-auto">
-            &ldquo;Cuidamos porque amamos. Organizamos porque precisamos. Construímos porque ninguém deveria carregar tudo sozinho.&rdquo;
-          </blockquote>
+          <div className="max-w-3xl mx-auto space-y-5">
+            <p className="text-marinho/75 leading-relaxed">
+              O TEAmamos nasceu do TEA. Mas a necessidade que ele encontrou é maior.
+            </p>
+            <p className="text-marinho/75 leading-relaxed">
+              Muitas famílias que vivem o TDAH, a dislexia, o TOD, deficiência intelectual, síndrome de
+              Down, altas habilidades, transtornos de aprendizagem, ansiedade, atrasos no desenvolvimento
+              e outros perfis neurodivergentes também enfrentam desafios de rotina, organização,
+              previsibilidade, escola, terapias, medicamentos, crises, comunicação e acompanhamento.
+            </p>
+            <p className="font-nunito text-xl sm:text-2xl font-bold text-marinho/80 italic">
+              &ldquo;O TEAmamos mantém sua origem, mas amplia seu propósito. Ele não é apenas sobre um diagnóstico. É sobre cuidado personalizado.&rdquo;
+            </p>
+          </div>
         </SectionReveal>
       </div>
     </section>

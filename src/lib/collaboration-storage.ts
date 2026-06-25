@@ -10,10 +10,12 @@ export type CollaborationInput = {
   cidade?: string;
   perfil: string;
   relacao_tea?: string;
+  realidade_acompanhada?: string[] | string;
   idade_tea?: string;
   nivel_suporte?: string;
   maior_dificuldade?: string[] | string;
   dificuldade_texto?: string;
+  necessidade_contexto?: string;
   recurso_desejado?: string;
   apps_usados?: string;
   o_que_funcionou?: string;
@@ -35,10 +37,12 @@ export type CollaborationRecord = {
   cidade: string | null;
   perfil: string;
   relacao_tea: string | null;
+  realidade_acompanhada: string[];
   idade_tea: string | null;
   nivel_suporte: string | null;
   maior_dificuldade: string[];
   dificuldade_texto: string | null;
+  necessidade_contexto: string | null;
   recurso_desejado: string | null;
   apps_usados: string | null;
   o_que_funcionou: string | null;
@@ -85,10 +89,12 @@ async function saveCollaborationToSupabase(input: CollaborationInput) {
     cidade: toNullableString(input.cidade),
     perfil: input.perfil.trim(),
     relacao_tea: toNullableString(input.relacao_tea),
+    realidade_acompanhada: normalizePainPoints(input.realidade_acompanhada),
     idade_tea: toNullableString(input.idade_tea),
     nivel_suporte: toNullableString(input.nivel_suporte),
     maior_dificuldade: normalizePainPoints(input.maior_dificuldade),
     dificuldade_texto: toNullableString(input.dificuldade_texto),
+    necessidade_contexto: toNullableString(input.necessidade_contexto),
     recurso_desejado: toNullableString(input.recurso_desejado),
     apps_usados: toNullableString(input.apps_usados),
     o_que_funcionou: toNullableString(input.o_que_funcionou),
@@ -113,8 +119,8 @@ function saveCollaborationToSqlite(input: CollaborationInput) {
   const db = getDb();
 
   const insertColaborador = db.prepare(`
-    INSERT INTO colaboradores (nome, email, whatsapp, cidade, perfil, relacao_tea, idade_tea, nivel_suporte, aceita_entrevista, aceita_beta, aceita_atualizacoes, aceita_termos)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO colaboradores (nome, email, whatsapp, cidade, perfil, relacao_tea, realidade_acompanhada, idade_tea, nivel_suporte, aceita_entrevista, aceita_beta, aceita_atualizacoes, aceita_termos)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `);
 
   const result = insertColaborador.run(
@@ -124,6 +130,7 @@ function saveCollaborationToSqlite(input: CollaborationInput) {
     toNullableString(input.cidade),
     input.perfil.trim(),
     toNullableString(input.relacao_tea),
+    normalizePainPoints(input.realidade_acompanhada).join(", ") || null,
     toNullableString(input.idade_tea),
     toNullableString(input.nivel_suporte),
     input.aceita_entrevista ? 1 : 0,
@@ -135,14 +142,15 @@ function saveCollaborationToSqlite(input: CollaborationInput) {
   const colaboradorId = result.lastInsertRowid;
 
   const insertContribuicao = db.prepare(`
-    INSERT INTO contribuicoes (colaborador_id, maior_dificuldade, dificuldade_texto, recurso_desejado, apps_usados, o_que_funcionou, o_que_nao_funcionou, funcionalidade_indispensavel)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO contribuicoes (colaborador_id, maior_dificuldade, dificuldade_texto, necessidade_contexto, recurso_desejado, apps_usados, o_que_funcionou, o_que_nao_funcionou, funcionalidade_indispensavel)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
   `);
 
   insertContribuicao.run(
     colaboradorId,
     normalizePainPoints(input.maior_dificuldade).join(", ") || null,
     toNullableString(input.dificuldade_texto),
+    toNullableString(input.necessidade_contexto),
     toNullableString(input.recurso_desejado),
     toNullableString(input.apps_usados),
     toNullableString(input.o_que_funcionou),
@@ -184,10 +192,12 @@ async function listCollaborationsFromSupabase() {
     cidade: row.cidade,
     perfil: row.perfil,
     relacao_tea: row.relacao_tea,
+    realidade_acompanhada: Array.isArray(row.realidade_acompanhada) ? row.realidade_acompanhada : [],
     idade_tea: row.idade_tea,
     nivel_suporte: row.nivel_suporte,
     maior_dificuldade: Array.isArray(row.maior_dificuldade) ? row.maior_dificuldade : [],
     dificuldade_texto: row.dificuldade_texto,
+    necessidade_contexto: row.necessidade_contexto,
     recurso_desejado: row.recurso_desejado,
     apps_usados: row.apps_usados,
     o_que_funcionou: row.o_que_funcionou,
@@ -214,6 +224,7 @@ function listCollaborationsFromSqlite(): CollaborationRecord[] {
       c.cidade,
       c.perfil,
       c.relacao_tea,
+      c.realidade_acompanhada,
       c.idade_tea,
       c.nivel_suporte,
       c.aceita_entrevista,
@@ -223,6 +234,7 @@ function listCollaborationsFromSqlite(): CollaborationRecord[] {
       c.criado_em,
       ct.maior_dificuldade,
       ct.dificuldade_texto,
+      ct.necessidade_contexto,
       ct.recurso_desejado,
       ct.apps_usados,
       ct.o_que_funcionou,
@@ -241,6 +253,10 @@ function listCollaborationsFromSqlite(): CollaborationRecord[] {
     cidade: (row.cidade as string | null) ?? null,
     perfil: String(row.perfil),
     relacao_tea: (row.relacao_tea as string | null) ?? null,
+    realidade_acompanhada: String(row.realidade_acompanhada ?? "")
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean),
     idade_tea: (row.idade_tea as string | null) ?? null,
     nivel_suporte: (row.nivel_suporte as string | null) ?? null,
     maior_dificuldade: String(row.maior_dificuldade ?? "")
@@ -248,6 +264,7 @@ function listCollaborationsFromSqlite(): CollaborationRecord[] {
       .map((item) => item.trim())
       .filter(Boolean),
     dificuldade_texto: (row.dificuldade_texto as string | null) ?? null,
+    necessidade_contexto: (row.necessidade_contexto as string | null) ?? null,
     recurso_desejado: (row.recurso_desejado as string | null) ?? null,
     apps_usados: (row.apps_usados as string | null) ?? null,
     o_que_funcionou: (row.o_que_funcionou as string | null) ?? null,

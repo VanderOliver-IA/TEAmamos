@@ -1,7 +1,7 @@
 "use client";
 
 import { SectionReveal, StaggerContainer, StaggerItem } from "./Animations";
-import { Users, User, Heart, Briefcase, GraduationCap } from "lucide-react";
+import { Users, User, Heart, Briefcase, GraduationCap, Brain, Search, ShieldPlus } from "lucide-react";
 
 const AUDIENCES = [
   {
@@ -13,31 +13,52 @@ const AUDIENCES = [
   },
   {
     icon: User,
-    title: "Pessoas TEA",
-    desc: "Para apoiar previsibilidade, autonomia e segurança, quando o uso fizer sentido para o perfil.",
+    title: "Pessoas neurodivergentes",
+    desc: "Para apoiar previsibilidade, autonomia, comunicação, organização e segurança, quando o uso fizer sentido para o perfil.",
     color: "bg-coral/10 border-coral/20",
     iconColor: "text-coral",
+  },
+  {
+    icon: Brain,
+    title: "Pessoas TEA",
+    desc: "Para apoiar rotina, sensibilidades, autorregulação, escola, terapias e comunicação.",
+    color: "bg-mostarda/10 border-mostarda/20",
+    iconColor: "text-mostarda",
+  },
+  {
+    icon: ShieldPlus,
+    title: "Pessoas com TDAH",
+    desc: "Para apoiar foco, lembretes, organização, rotina, tarefas, medicação e compromissos.",
+    color: "bg-azul/10 border-azul/20",
+    iconColor: "text-azul",
+  },
+  {
+    icon: Search,
+    title: "Pessoas em investigação",
+    desc: "Para registrar sinais, dificuldades, evolução e informações importantes antes ou durante avaliações.",
+    color: "bg-teal/10 border-teal/20",
+    iconColor: "text-teal",
   },
   {
     icon: Heart,
     title: "Familiares e cuidadores",
     desc: "Para acompanhar informações importantes com mais clareza e menos sobrecarga.",
-    color: "bg-mostarda/10 border-mostarda/20",
-    iconColor: "text-mostarda",
+    color: "bg-coral/10 border-coral/20",
+    iconColor: "text-coral",
   },
   {
     icon: Briefcase,
     title: "Profissionais",
     desc: "Para receber informações organizadas, com consentimento da família.",
-    color: "bg-azul/10 border-azul/20",
-    iconColor: "text-azul",
+    color: "bg-mostarda/10 border-mostarda/20",
+    iconColor: "text-mostarda",
   },
   {
     icon: GraduationCap,
     title: "Escolas e mediadores",
-    desc: "Para apoiar rotinas mais previsíveis e alinhadas no ambiente escolar.",
-    color: "bg-teal/10 border-teal/20",
-    iconColor: "text-teal",
+    desc: "Para apoiar rotinas mais previsíveis, adaptações e comunicação entre escola e família.",
+    color: "bg-azul/10 border-azul/20",
+    iconColor: "text-azul",
   },
 ];
 
@@ -52,7 +73,7 @@ export function AudienceSection() {
           <h2 className="font-nunito text-3xl sm:text-4xl md:text-5xl font-extrabold text-marinho mb-6">
             Uma ferramenta pensada para quem
             <br />
-            <span className="text-azul">vive o TEA de diferentes formas.</span>
+            <span className="text-azul">vive a neurodivergência de diferentes formas.</span>
           </h2>
         </SectionReveal>
 

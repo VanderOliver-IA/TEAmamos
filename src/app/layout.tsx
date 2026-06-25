@@ -17,24 +17,30 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "TEAmamos | Sistema em construção para apoiar famílias e pessoas TEA",
+  title: "TEAmamos | Rotina, cuidado e previsibilidade para pessoas neurodivergentes",
   description:
-    "Conheça o TEAmamos, projeto idealizado por Vanderson Oliveira para criar um sistema de organização, previsibilidade e cuidado para pessoas TEA, famílias, cuidadores e profissionais. Colabore com ideias e ajude a construir essa solução.",
+    "TEAmamos é uma plataforma em construção para apoiar pessoas neurodivergentes, famílias, cuidadores, escolas e profissionais com rotina, organização, autorregulação, medicamentos, terapias, escola e acompanhamento do cuidado.",
   keywords: [
     "TEAmamos",
-    "aplicativo para TEA",
-    "aplicativo para autismo",
-    "rotina visual TEA",
-    "sistema para famílias TEA",
-    "organização para pessoas autistas",
-    "apoio para pais de autistas",
-    "cuidado e previsibilidade no TEA",
-    "tecnologia para autismo",
+    "neurodivergência",
+    "TEA",
+    "autismo",
+    "TDAH",
+    "rotina visual",
+    "autorregulação",
+    "previsibilidade",
+    "inclusão",
+    "cuidado familiar",
+    "acompanhamento terapêutico",
+    "organização escolar",
+    "medicamentos",
+    "crises e gatilhos",
+    "rede de apoio",
   ],
   openGraph: {
-    title: "TEAmamos | Organizar o cuidado sem perder o amor no processo",
+    title: "TEAmamos | Rotina, cuidado e previsibilidade para pessoas neurodivergentes",
     description:
-      "Ajude a construir um sistema para organizar o cuidado de quem vive o TEA de perto.",
+      "Plataforma em construção para apoiar pessoas neurodivergentes, famílias, cuidadores, escolas e profissionais com mais previsibilidade e organização.",
     type: "website",
     locale: "pt_BR",
     siteName: "TEAmamos",

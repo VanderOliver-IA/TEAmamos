@@ -45,6 +45,12 @@ export function AboutSection() {
                 reduzir sobrecarga e transformar tecnologia em apoio real para o cuidado.
               </p>
               <p>
+                Com o avanço da ideia, Vanderson percebeu que a dor que deu origem ao <BrandName className="rounded-sm bg-white/90 px-1" />
+                não pertence apenas ao TEA. Famílias que vivem outras neurodivergências também
+                precisam de apoio para organizar rotina, escola, terapias, medicamentos, crises,
+                evolução e rede de cuidado.
+              </p>
+              <p>
                 Com experiência em estratégia digital, criação de sistemas, inteligência artificial e
                 desenvolvimento de projetos, Vanderson une vivência familiar e visão tecnológica para
                 propor uma ferramenta construída com escuta, responsabilidade e propósito.
@@ -52,7 +58,8 @@ export function AboutSection() {
               <p>
                 O <BrandName className="rounded-sm bg-white/90 px-1" /> nasce dessa união entre vida real e construção prática. Não é um projeto
                 criado apenas para parecer bonito. É uma tentativa consciente de transformar uma dor
-                real em uma solução útil para mais famílias.
+                real em uma solução útil para mais famílias. Ele nasce do TEA, mas se abre para a
+                neurodiversidade.
               </p>
             </div>
           </div>
@@ -63,8 +70,8 @@ export function AboutSection() {
           <blockquote className="relative">
             <div className="text-6xl text-teal/30 absolute -top-4 -left-2">&ldquo;</div>
             <p className="font-nunito text-xl sm:text-2xl font-bold text-white/90 italic max-w-2xl mx-auto px-8">
-              Eu não quero criar um aplicativo para TEA baseado em achismo. Quero construir uma
-              ferramenta ouvindo quem vive isso todos os dias.
+              Eu não quero criar uma ferramenta baseada em achismo. Quero construir ouvindo quem vive
+              o TEA, o TDAH e outras realidades neurodivergentes todos os dias.
             </p>
             <footer className="mt-4 text-teal font-semibold">— Vanderson Oliveira</footer>
           </blockquote>

@@ -49,7 +49,7 @@ export default async function AdminLoginPage() {
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-white/75">
               Este primeiro painel foi preparado para centralizar as mensagens enviadas pela comunidade
-              e dar visibilidade imediata ao que famílias, pessoas TEA e profissionais estão trazendo.
+              e dar visibilidade imediata ao que famílias, pessoas neurodivergentes e profissionais estão trazendo.
             </p>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2">

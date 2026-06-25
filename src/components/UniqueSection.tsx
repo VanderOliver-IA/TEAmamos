@@ -4,30 +4,27 @@ import { SectionReveal, StaggerContainer, StaggerItem } from "./Animations";
 import { BrandName } from "./BrandLogo";
 
 const PROFILES = [
-  { label: "Crianças", emoji: "🧒" },
-  { label: "Adolescentes", emoji: "🧑" },
-  { label: "Adultos", emoji: "👨" },
-  { label: "TEA nível 1", emoji: "🟢" },
-  { label: "TEA nível 2", emoji: "🟡" },
-  { label: "TEA nível 3", emoji: "🔴" },
+  { label: "TEA", emoji: "🧩" },
+  { label: "TDAH", emoji: "⚡" },
+  { label: "Dislexia", emoji: "📚" },
+  { label: "TOD", emoji: "🧭" },
+  { label: "Altas habilidades", emoji: "🚀" },
+  { label: "Deficiência intelectual", emoji: "🤝" },
+  { label: "Síndrome de Down", emoji: "💛" },
+  { label: "Transtornos de aprendizagem", emoji: "📝" },
   { label: "Em avaliação", emoji: "🔍" },
-  { label: "Sem classificação", emoji: "📋" },
+  { label: "Sem diagnóstico fechado", emoji: "📋" },
   { label: "Maior autonomia", emoji: "🌟" },
-  { label: "Maior suporte", emoji: "🤝" },
+  { label: "Maior suporte", emoji: "🛟" },
+  { label: "Sensibilidade sensorial", emoji: "🎧" },
+  { label: "Rigidez de rotina", emoji: "🗓️" },
+  { label: "Dificuldade de atenção", emoji: "🎯" },
+  { label: "Hiperfoco", emoji: "🔥" },
+  { label: "Ansiedade", emoji: "💭" },
+  { label: "Comunicação alternativa", emoji: "💬" },
 ];
 
-const COLORS = [
-  "bg-teal/10 border-teal/30",
-  "bg-coral/10 border-coral/30",
-  "bg-mostarda/10 border-mostarda/30",
-  "bg-azul/10 border-azul/30",
-  "bg-teal/10 border-teal/30",
-  "bg-coral/10 border-coral/30",
-  "bg-mostarda/10 border-mostarda/30",
-  "bg-azul/10 border-azul/30",
-  "bg-teal/10 border-teal/30",
-  "bg-coral/10 border-coral/30",
-];
+const COLORS = ["bg-teal/10 border-teal/30", "bg-coral/10 border-coral/30", "bg-mostarda/10 border-mostarda/30", "bg-azul/10 border-azul/30"];
 
 export function UniqueSection() {
   return (
@@ -38,14 +35,18 @@ export function UniqueSection() {
             Personalização
           </span>
           <h2 className="font-nunito text-3xl sm:text-4xl md:text-5xl font-extrabold text-marinho mb-6">
-            Cada TEA é único.
+            Cada pessoa neurodivergente é única.
             <br />
             <span className="text-azul">O sistema precisa respeitar isso.</span>
           </h2>
           <p className="text-marinho/70 max-w-2xl mx-auto leading-relaxed">
-            Não existe uma única forma de viver o autismo. Cada pessoa TEA tem sua própria maneira
-            de se comunicar, se regular, lidar com estímulos, reagir a mudanças, aprender e criar vínculos.
-            Por isso, o <BrandName /> não pode ser engessado.
+            Diagnósticos ajudam a orientar caminhos, mas não definem uma pessoa por completo. Cada
+            pessoa neurodivergente tem sua própria forma de se comunicar, aprender, se organizar,
+            sentir estímulos, lidar com mudanças, construir autonomia e se regular. Por isso, o
+            <BrandName /> não pode ser engessado.
+          </p>
+          <p className="text-marinho/70 max-w-2xl mx-auto leading-relaxed mt-4">
+            O sistema precisa começar entendendo o perfil individual, não apenas o diagnóstico.
           </p>
         </SectionReveal>
 
@@ -53,7 +54,7 @@ export function UniqueSection() {
         <StaggerContainer className="flex flex-wrap justify-center gap-4 mb-12" staggerDelay={0.08}>
           {PROFILES.map((profile, i) => (
             <StaggerItem key={profile.label}>
-              <div className={`rounded-xl border-2 ${COLORS[i]} px-5 py-4 text-center card-hover min-w-[140px]`}>
+              <div className={`rounded-xl border-2 ${COLORS[i % COLORS.length]} px-5 py-4 text-center card-hover min-w-[140px]`}>
                 <span className="text-2xl block mb-2">{profile.emoji}</span>
                 <p className="font-semibold text-marinho text-sm">{profile.label}</p>
               </div>

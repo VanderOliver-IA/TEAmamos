@@ -22,7 +22,7 @@ const STEPS = [
   {
     num: "03",
     title: "Pesquisa de soluções existentes",
-    desc: "Benchmark de apps, sistemas e ferramentas já disponíveis no mercado.",
+    desc: "Benchmark de apps, sistemas e ferramentas voltadas para TEA, TDAH, neurodivergências, rotina visual, organização, autorregulação, medicamentos, escola, terapias e acompanhamento familiar.",
     color: "mostarda",
     status: "upcoming",
   },
@@ -50,7 +50,7 @@ const STEPS = [
   {
     num: "07",
     title: "Testes com usuários reais",
-    desc: "Validação com famílias e profissionais que vivem o TEA.",
+    desc: "Validação com famílias, pessoas neurodivergentes, profissionais e escolas que vivem diferentes realidades de apoio, rotina e acompanhamento.",
     color: "mostarda",
     status: "upcoming",
   },
