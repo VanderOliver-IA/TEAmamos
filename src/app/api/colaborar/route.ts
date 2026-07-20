@@ -78,8 +78,9 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error("Error saving collaboration:", error);
+    const errorMessage = error instanceof Error ? error.message : "Erro desconhecido";
     return NextResponse.json(
-      { error: "Erro interno ao salvar a colaboração." },
+      { error: `Erro interno ao salvar a colaboração: ${errorMessage}` },
       { status: 500 }
     );
   }
